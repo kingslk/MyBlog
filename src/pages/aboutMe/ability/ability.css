@@ -1,0 +1,9 @@
+.ability-container {
+  width: 60%;
+  margin: 30px auto;
+}
+.ability-title {
+  text-align: center;
+  font-size: 24px;
+  margin: 10px;
+}

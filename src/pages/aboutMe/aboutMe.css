@@ -1,0 +1,22 @@
+.aboutMe-container {
+  width: 1000px;
+  margin: 80px auto;
+  background: white;
+  position: relative;
+  opacity: 0.9;
+  border-radius: 10px;
+}
+.aboutMe-header {
+  width: 100px;
+  height: 100px;
+  border-radius: 100px;
+  border: 1px solid;
+  margin: 10px;
+}
+.nav-menu {
+  display: flex;
+  flex-direction: column;
+  background: #cfcfcf;
+  opacity: 0.9;
+  min-height: 400px;
+}

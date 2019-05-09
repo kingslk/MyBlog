@@ -1,0 +1,37 @@
+.main-container {
+  width: 68%;
+  min-height: 400px;
+  margin: 80px 0 0 10px;
+  box-shadow: 1px 1px 6px 1px;
+  border-radius: 10px;
+}
+.ant-popover-placement-right > .ant-popover-content > .ant-popover-arrow {
+  top: 13%;
+  transform: translateY(-50%) rotate(45deg);
+}
+.ant-popover-inner {
+  background-color: #ffffff00;
+  background-clip: padding-box;
+  border-radius: 4px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.15) \9;
+}
+.article-name {
+  color: #43a5d3;
+  font-size: 36px;
+  margin: 0px 0px 10px 18px;
+}
+.article-name:hover {
+  color: #177aff;
+}
+.article-editing-time {
+  display: flex;
+  margin-left: 20px;
+}
+.icon-container {
+  font-size: 24px;
+}
+.time-container {
+  margin: -3px 0px 0px 20px;
+  font-size: 20px;
+}
