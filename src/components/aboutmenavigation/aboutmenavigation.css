@@ -7,6 +7,7 @@
   flex-direction: column;
   align-items: center;
   width: 100%;
+  color: white;
   transition: all 1s;
 }
 .nav-action {
@@ -15,7 +16,6 @@
 .nav-item:hover {
   background: #b9f7ff;
   transition: all 1s;
+  color: gray
 }
-a {
-  color: white;
-}
+

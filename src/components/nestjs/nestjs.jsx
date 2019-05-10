@@ -18,7 +18,7 @@ class nestjs extends Component {
           height: '100%',
           position: 'absolute',
           top: '300px',
-          zIndex: '0'
+          zIndex: '1' 
         }}
       >
         <ReactCanvasNest
@@ -27,7 +27,7 @@ class nestjs extends Component {
             follow,
             lineColor: '0,0,205',
             count: 70,
-            dist: 11000
+            dist: 12000
           }}
         />
       </div>

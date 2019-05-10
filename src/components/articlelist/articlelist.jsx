@@ -8,7 +8,12 @@ export default class ArticleList extends Component {
     const Panel = Collapse.Panel;
     const { finalProjects, primarySchool } = ArticleListeData;
     return (
-      <div style={{ marginTop: '10px', marginLeft: '12px' }}>
+      <div
+        style={{
+          marginTop: '10px',
+          marginLeft: '12px',
+        }}
+      >
         <Collapse bordered={false} defaultActiveKey={['1']}>
           <Panel header="期末项目" key="1">
             <div className="articlelist">

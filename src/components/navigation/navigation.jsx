@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Menu } from 'antd';
+import { Menu, notification } from 'antd';
 import { Link, withRouter } from 'react-router-dom';
 import './navigation.css';
 
@@ -34,6 +34,12 @@ class navigation extends Component {
   };
   render() {
     const { pageStatus } = this.state;
+    const openNotificationWithIcon = type => {
+      notification[type]({
+        message: '警告',
+        description: '更多功能敬请期待'
+      });
+    };
     return (
       <div>
         <Menu
@@ -49,9 +55,7 @@ class navigation extends Component {
           <Menu.Item key="main">
             <Link to="/home">首页</Link>
           </Menu.Item>
-          <Menu.Item key="hotarticles">
-            <Link to="/hotarticle">热门文章</Link>
-          </Menu.Item>
+
           <SubMenu title={<span className="recommendation">相关推荐</span>}>
             <Menu.Item key="re-webs">
               <Link to="/rewebs">网站推荐</Link>
@@ -60,8 +64,14 @@ class navigation extends Component {
               <Link to="/rebooks">书籍推荐</Link>
             </Menu.Item>
           </SubMenu>
+          <Menu.Item key="antintroduction">
+            <Link to="/antintroduction">热门文章</Link>
+          </Menu.Item>
           <Menu.Item key="about-me">
             <Link to="/aboutMe">关于我</Link>
+          </Menu.Item>
+          <Menu.Item key="more">
+            <Link onClick={() => openNotificationWithIcon('info')}>更多</Link>
           </Menu.Item>
         </Menu>
       </div>

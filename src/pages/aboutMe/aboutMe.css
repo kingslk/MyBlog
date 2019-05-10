@@ -3,8 +3,9 @@
   margin: 80px auto;
   background: white;
   position: relative;
-  opacity: 0.9;
+  opacity: 0.7;
   border-radius: 10px;
+  z-index: 1;
 }
 .aboutMe-header {
   width: 100px;

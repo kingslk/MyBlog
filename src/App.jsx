@@ -10,7 +10,7 @@ import WheelPlanting from './components/wheelplanting/wheelplanting';
 import NavigationBar from './components/navigation/navigation';
 import NestJs from './components/nestjs/nestjs';
 import MainIndex from './pages/main/mainIndex';
-import HotArticleIndex from './pages/hotarticle/hotarticleIndex';
+import AntIntroduction from './pages/antintroduction/antintroduction';
 import ReWebs from './pages/recommendation/rewebs/rewebs';
 import ReBooks from './pages/recommendation/rebooks/rebooks';
 import AboutMe from './pages/aboutMe/aboutMe';
@@ -32,7 +32,7 @@ class App extends Component {
           <div style={{ marginBottom: '10px' }}>
             <Switch>
               <Route path="/home" component={MainIndex} />
-              <Route path="/hotarticle" component={HotArticleIndex} />
+              <Route path="/antintroduction" component={AntIntroduction} />
               <Route path="/rewebs" component={ReWebs} />
               <Route path="/rebooks" component={ReBooks} />
               <Route path="/aboutMe" component={AboutMe} />
