@@ -16,28 +16,9 @@ export default class AboutMe extends Component {
     } = this.props;
     return (
       <div className="aboutMe-container">
-        <div
-          style={{
-            display: 'flex',
-            boxShadow: '2px 3px 6px 6px #c2bfbf',
-            borderRadius: '20px'
-          }}
-        >
-          <div
-            style={{
-              background: '#cfcfcf',
-              borderTopLeftRadius: '20px',
-              borderBottomLeftRadius: '20px'
-            }}
-          >
-            <div
-              style={{
-                border: '1px solid',
-                width: '120px',
-                borderTopLeftRadius: '20px',
-                background: 'white'
-              }}
-            >
+        <div className="aboutMe-flex">
+          <div className="aboutMe-left">
+            <div className="aboutMe-header-bg">
               <div className="aboutMe-header" />
             </div>
             <Sider className="nav-menu" width={120}>

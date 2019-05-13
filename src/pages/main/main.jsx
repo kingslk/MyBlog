@@ -9,7 +9,7 @@ export default class Main extends Component {
     return (
       <div className="main-container">
         <Timeline
-          style={{ margin: '30px', lineHeight: '200px' }}
+          style={{ margin: '50px', lineHeight: '200px' }}
           pending={true}
         >
           {articleList.map((value, index) => {
@@ -18,7 +18,7 @@ export default class Main extends Component {
                 <Popover
                   placement="right"
                   content={
-                    <div style={{ width: '800px' }}>
+                    <div style={{ width: '900px' }}>
                       <Link to="article">
                         <Tooltip title="点我查看详情" placement="rightTop">
                           <label className="article-name">

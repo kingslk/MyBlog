@@ -7,6 +7,22 @@
   border-radius: 10px;
   z-index: 1;
 }
+.aboutMe-flex {
+  display: flex;
+  box-shadow: 2px 3px 6px 6px #c2bfbf;
+  border-radius: 20px;
+}
+.aboutMe-left {
+  background: #cfcfcf;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+.aboutMe-header-bg{
+  border: 1px solid;
+  width: 120px;
+  border-top-left-radius: 20px;
+  background: white
+}
 .aboutMe-header {
   width: 100px;
   height: 100px;

@@ -1,0 +1,98 @@
+.rebooks-container {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 80px auto;
+  margin-bottom: 0px;
+  transform: translateY(30px);
+  transition: all 1s;
+  z-index: 3;
+}
+.rebooks-container-change {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 80px auto;
+  margin-bottom: 0px;
+  transform: translateY(80px);
+  transition: all 1s;
+  z-index: 3;
+}
+.book-list {
+  min-height: 500px;
+  width: 55%;
+  box-shadow: 1px 1px 20px 2px rgba(4, 5, 13, 0.23);
+}
+.re-mine-container {
+  width: 20%;
+  display: flex;
+  flex-direction: column;
+}
+.book-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 20px 40px;
+  height: 220px;
+  border-bottom: 1px solid;
+}
+.book-img {
+  box-shadow: 3px 4px 12px 0 rgba(0, 0, 0, 0.2);
+}
+.book-imfomation {
+  padding-left: 20px;
+}
+.book-title-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+.book-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+.book-introduction {
+  margin: 0;
+  padding: 20px 20px;
+  color: #a0a0a0;
+}
+.book-author-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  width: 600px;
+  padding: 0 20px;
+}
+.book-author {
+  margin: 0;
+}
+.book-author-introduction {
+  margin: 0;
+}
+.book-content-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  width: 250px;
+  padding: 20px 15px;
+}
+.book-price {
+  margin: 0;
+  font-size: 20px;
+  color: #f50;
+  font-weight: bold;
+}
+.book-buyer {
+  margin: 0;
+  font-size: 16px;
+  color: #a0a0a0;
+}

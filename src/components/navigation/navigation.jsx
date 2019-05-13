@@ -22,7 +22,7 @@ class navigation extends Component {
   };
   handleScroll = e => {
     let ctx = this;
-    if (document.documentElement.scrollTop >= 80) {
+    if (document.documentElement.scrollTop >= 100) {
       ctx.setState({
         pageStatus: 'change'
       });
@@ -65,7 +65,7 @@ class navigation extends Component {
             </Menu.Item>
           </SubMenu>
           <Menu.Item key="antintroduction">
-            <Link to="/antintroduction">热门文章</Link>
+            <Link to="/antintroduction">项目简介</Link>
           </Menu.Item>
           <Menu.Item key="about-me">
             <Link to="/aboutMe">关于我</Link>
