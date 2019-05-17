@@ -18,7 +18,7 @@ class nestjs extends Component {
           height: '100%',
           position: 'absolute',
           top: '300px',
-          zIndex: '1' 
+          zIndex: '1'
         }}
       >
         <ReactCanvasNest

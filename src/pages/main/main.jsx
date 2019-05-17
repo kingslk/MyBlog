@@ -3,9 +3,27 @@ import { Button, Timeline, Popover, Icon, Tooltip } from 'antd';
 import { Link } from 'react-router-dom';
 import './main.css';
 import MainData from './maindata';
+import WeiXin from '../../assets/share/weixin.png';
+import QQ from '../../assets/share/qq.png';
+import WeiBo from '../../assets/share/weibo.png';
 export default class Main extends Component {
+  constructor() {
+    super();
+    this.state = {
+      showWeiXin: false,
+      showQQ: false,
+      showWeibo: false
+    };
+  }
+  showShare = () => {
+    console.log(this.state.show);
+    this.setState({
+      show: !this.state.show
+    });
+  };
   render() {
     const { articleList } = MainData;
+    const { showWeiXin } = this.state;
     return (
       <div className="main-container">
         <Timeline
@@ -42,7 +60,30 @@ export default class Main extends Component {
                         {value.articleintroduction}
                       </p>
                       <hr />
-                      <Button style={{ marginLeft: '680px' }}>分享按钮</Button>
+                      <div
+                        style={{
+                          display: 'flex',
+                          justifyContent: 'space-between',
+                          alignItems: 'center',
+                          width: '400px',
+                          marginLeft: '400px'
+                        }}
+                      >
+                        <img
+                          src={WeiXin}
+                          width={30}
+                          className={
+                            showWeiXin === false
+                              ? 'share-by-weixin'
+                              : 'share-by-weixin-after'
+                          }
+                        />
+                        <img src={QQ} width={30} />
+                        <img src={WeiBo} width={30} />
+                        <Button type="dashed" onClick={this.showShare}>
+                          分享按钮
+                        </Button>
+                      </div>
                     </div>
                   }
                   visible={true}

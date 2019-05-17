@@ -31,8 +31,15 @@ export default class Mine extends Component {
           <Text>Xiamen</Text>
         </div>
         <div className="personalized-signature">
-          <p>这里好空啊，不如写一个个性签名吧</p>
-          <p style={{ textAlign: 'right' }}>——————不知道写什么</p>
+          <p className="personalized-signature-p">
+            这里好空啊，不如写一个个性签名吧
+          </p>
+          <p
+            className="personalized-signature-p"
+            style={{ textAlign: 'right' }}
+          >
+            ——————不知道写什么啊
+          </p>
         </div>
         <div style={{ display: 'flex', height: '60px' }}>
           <Text className="text-container">文章：10</Text>

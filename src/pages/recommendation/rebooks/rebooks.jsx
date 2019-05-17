@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
-import { Anchor } from 'antd';
 import ReBooksData from './rebooksdata';
+import Code from '../../../assets/code.jpg';
+import Pen from '../../../assets/pen.png';
+import Mail from '../../../assets/mail.png';
+import Welfare from '../../../assets/welfare.png';
 import './rebooks.css';
-import { Avatar, Tag } from 'antd';
+import { Avatar, Tag, message } from 'antd';
+import { Link } from 'react-router-dom';
 export default class ReBooks extends Component {
   constructor() {
     super();
@@ -25,25 +29,18 @@ export default class ReBooks extends Component {
       });
     }
   };
+  error = () => {
+    message.error('功能还未开发');
+  };
   render() {
     const { booklist } = ReBooksData;
-    const { Link } = Anchor;
-    const { pageStatus } = this.state.pageStatus;
+    const { pageStatus } = this.state;
     return (
-      <div
-        className={
-          pageStatus === 'change'
-            ? 'rebooks-container'
-            : 'rebooks-container-change'
-        }
-      >
+      <div className="rebooks-container">
         <div className="book-list">
           {booklist.map((value, index) => {
             return (
-              <div
-                className="book-item"
-                id={`book${index}`}
-              >
+              <div className="book-item" id={`book${index}`}>
                 <img
                   className="book-img"
                   width={120}
@@ -53,7 +50,9 @@ export default class ReBooks extends Component {
                 <div className="book-imfomation">
                   <div className="book-title-container">
                     <Tag color="#f50">预售</Tag>
-                    <p className="book-title">{value.booktitle}</p>
+                    <Link>
+                      <p className="book-title">{value.booktitle}</p>
+                    </Link>
                   </div>
                   <p className="book-introduction">{value.bookintroduction}</p>
                   <div className="book-author-container">
@@ -80,15 +79,36 @@ export default class ReBooks extends Component {
             );
           })}
         </div>
-        <div className="re-mine-container">
-          <Anchor affix={false}>
-            <Link href="#book0" title="Basic demo" />
-            <Link href="#book1" title="Static demo" />
-            <Link href="#book2" title="API">
-              <Link href="#book3" title="Anchor Props" />
-              <Link href="#book4" title="Link Props" />
+        <div
+          className={
+            pageStatus === 'nochange' ? 'some-message' : 'some-message-after'
+          }
+        >
+          <div className="introduction-reason">
+            <p className="introduction-reason-title">Blog小册推荐是什么？</p>
+            <p style={{ margin: '0 20px' }}>
+              一个小篇幅、高浓度、成体系、有收益的技术学习平台
+            </p>
+            <div className="div-line" />
+            <p>关注公众号领取优惠码</p>
+            <img src={Code} alt="二维码" style={{ marginBottom: '10px' }} />
+          </div>
+          <div className="rebooks-message-container">
+            <Link
+              onClick={this.error}
+              style={{ borderRight: '1px solid' }}
+              className="do-somethings"
+            >
+              <img src={Pen} width={70} alt="笔" />
+              <p>成为作者</p>
             </Link>
-          </Anchor>
+
+            <Link onClick={this.error} className="do-somethings">
+              <img src={Mail} width={70} alt="信封" />
+              <p>建议反馈</p>
+            </Link>
+          </div>
+          <img src={Welfare} alt="奖品" style={{ marginTop: '10px' }} />
         </div>
       </div>
     );

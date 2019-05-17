@@ -70,8 +70,11 @@ class navigation extends Component {
           <Menu.Item key="about-me">
             <Link to="/aboutMe">关于我</Link>
           </Menu.Item>
-          <Menu.Item key="more">
-            <Link onClick={() => openNotificationWithIcon('info')}>更多</Link>
+          <Menu.Item
+            key="more"
+            onClick={() => openNotificationWithIcon('info')}
+          >
+            更多
           </Menu.Item>
         </Menu>
       </div>
