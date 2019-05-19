@@ -1,0 +1,41 @@
+.model-book-imfomation {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+.model-book-title-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.modal-book-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+.modal-book-introduction {
+  margin: 0;
+  color: #c5c5c5;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.model-book-author-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.modal-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+}
+.modal-button-container > button {
+  margin-right: 10px;
+}

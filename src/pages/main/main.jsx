@@ -6,24 +6,50 @@ import MainData from './maindata';
 import WeiXin from '../../assets/share/weixin.png';
 import QQ from '../../assets/share/qq.png';
 import WeiBo from '../../assets/share/weibo.png';
+
 export default class Main extends Component {
   constructor() {
     super();
     this.state = {
-      showWeiXin: false,
-      showQQ: false,
-      showWeibo: false
+      showWeiXin: [false, false, false, false],
+      showQQ: [false, false, false, false],
+      showWeibo: [false, false, false, false],
+      articleList: null
     };
   }
-  showShare = () => {
-    console.log(this.state.show);
+  componentWillMount() {
+    const { articleList } = MainData;
     this.setState({
-      show: !this.state.show
+      articleList: articleList
+    });
+  }
+  showShare = num => {
+    var showWeiXin = this.state.showWeiXin;
+    var showQQ = this.state.showQQ;
+    var showWeibo = this.state.showWeibo;
+    if (showWeiXin[num] === false) {
+      showWeiXin[num] = true;
+    } else {
+      showWeiXin[num] = false;
+    }
+    if (showQQ[num] === false) {
+      showQQ[num] = true;
+    } else {
+      showQQ[num] = false;
+    }
+    if (showWeibo[num] === false) {
+      showWeibo[num] = true;
+    } else {
+      showWeibo[num] = false;
+    }
+    this.setState({
+      showWeiXin: showWeiXin,
+      showQQ: showQQ,
+      showWeibo: showWeibo
     });
   };
   render() {
-    const { articleList } = MainData;
-    const { showWeiXin } = this.state;
+    const { showWeiXin, showQQ, showWeibo, articleList } = this.state;
     return (
       <div className="main-container">
         <Timeline
@@ -69,19 +95,38 @@ export default class Main extends Component {
                           marginLeft: '400px'
                         }}
                       >
-                        <img
-                          src={WeiXin}
-                          width={30}
+                        <div
                           className={
-                            showWeiXin === false
+                            showWeiXin[index] === false
                               ? 'share-by-weixin'
                               : 'share-by-weixin-after'
                           }
-                        />
-                        <img src={QQ} width={30} />
-                        <img src={WeiBo} width={30} />
-                        <Button type="dashed" onClick={this.showShare}>
-                          分享按钮
+                        >
+                          <img src={WeiXin} width={30} alt="微信" />
+                        </div>
+                        <div
+                          className={
+                            showQQ[index] === false
+                              ? 'share-by-qq'
+                              : 'share-by-qq-after'
+                          }
+                        >
+                          <img src={QQ} width={30} alt="qq" />
+                        </div>
+                        <div
+                          className={
+                            showWeibo[index] === false
+                              ? 'share-by-weibo'
+                              : 'share-by-weibo-after'
+                          }
+                        >
+                          <img src={WeiBo} width={30} alt="weibo" />
+                        </div>
+                        <Button
+                          type="dashed"
+                          onClick={() => this.showShare(index)}
+                        >
+                          分享本文
                         </Button>
                       </div>
                     </div>

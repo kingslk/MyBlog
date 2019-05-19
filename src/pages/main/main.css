@@ -38,10 +38,72 @@
   font-size: 20px;
 }
 .share-by-weixin {
-  transform:translateX(330px);
-  transition: all 2s
+  transform: translateX(330px);
+  transition: all 3s;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .share-by-weixin-after {
-  transform:translateX(0px);
-  transition: all 2s
+  transform: translateX(90px);
+  transition: all 3s;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.share-by-weixin-after:hover {
+  border: 1px solid;
+  border-radius: 35px;
+  transition: all 2s;
+}
+.share-by-qq {
+  transform: translateX(250px);
+  transition: all 2s;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.share-by-qq-after {
+  transform: translateX(60px);
+  transition: all 2s;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.share-by-qq-after:hover {
+  border: 1px solid;
+  border-radius: 35px;
+  transition: all 2s;
+}
+.share-by-weibo {
+  transform: translateX(150px);
+  transition: all 1s;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.share-by-weibo-after {
+  transform: translateX(30px);
+  transition: all 1s;
+  width: 35px;
+  height: 35px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.share-by-weibo-after:hover {
+  border: 1px solid;
+  border-radius: 35px;
+  transition: all 2s;
 }

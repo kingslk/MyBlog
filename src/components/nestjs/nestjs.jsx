@@ -1,25 +1,35 @@
 import React, { Component } from 'react';
 import ReactCanvasNest from 'react-canvas-nest';
-
+import './nestjs.css';
 class nestjs extends Component {
   constructor() {
     super();
     this.state = {
-      follow: true
+      follow: true,
+      pageStatus: 'nochange'
     };
   }
-
+  componentDidMount() {
+    window.addEventListener('scroll', this.handleScroll);
+  }
+  handleScroll = e => {
+    let ctx = this;
+    if (document.documentElement.scrollTop >= 100) {
+      ctx.setState({
+        pageStatus: 'change'
+      });
+    } else {
+      ctx.setState({
+        pageStatus: 'nochange'
+      });
+    }
+  };
   render() {
-    const { follow } = this.state;
+    const { follow, pageStatus } = this.state;
     return (
       <div
-        style={{
-          width: '100%',
-          height: '100%',
-          position: 'absolute',
-          top: '300px',
-          zIndex: '1'
-        }}
+        className={pageStatus === 'nochange' ? 'nestjs-before' : 'nestjs-after'}
+        style={{ position: 'fixed' }}
       >
         <ReactCanvasNest
           className="canvasNest"

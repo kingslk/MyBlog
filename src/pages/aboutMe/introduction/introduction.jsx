@@ -1,12 +1,14 @@
 import React, { Component } from 'react';
-import { Upload, Icon, message } from 'antd';
+import { Upload, Icon, message, Tooltip } from 'antd';
+import FirstHead from '../../../assets/books/book1.jpg';
 import './introduction.css';
 
 export default class introduction extends Component {
   constructor() {
     super();
     this.state = {
-      loading: false
+      loading: false,
+      imageUrl: FirstHead
     };
   }
   getBase64(img, callback) {
@@ -35,7 +37,7 @@ export default class introduction extends Component {
       // Get this url from response in real world.
       this.getBase64(info.file.originFileObj, imageUrl =>
         this.setState({
-          imageUrl,
+          imageUrl: imageUrl,
           loading: false
         })
       );
@@ -50,12 +52,8 @@ export default class introduction extends Component {
     );
     const imageUrl = this.state.imageUrl;
     return (
-      <div style={{ margin: '20px auto', position: 'relative' }}>
-        <h1
-          className='introduction-title'
-        >
-          个人简历
-        </h1>
+      <div style={{ margin: '30px auto', position: 'relative' }}>
+        <h1 className="introduction-title">个人简历</h1>
 
         <table border="1px" style={{ width: '700px', minHeight: '500px' }}>
           <tbody>
@@ -77,11 +75,13 @@ export default class introduction extends Component {
                   onChange={this.handleChange}
                 >
                   {imageUrl ? (
-                    <img
-                      src={imageUrl}
-                      alt="avatar"
-                      style={{ width: '100%' }}
-                    />
+                    <Tooltip title="点击切换头像">
+                      <img
+                        src={imageUrl}
+                        alt="avatar"
+                        style={{ width: '100%' }}
+                      />
+                    </Tooltip>
                   ) : (
                     uploadButton
                   )}
@@ -139,7 +139,12 @@ export default class introduction extends Component {
             </tr>
             <tr>
               <td>项目经历</td>
-              <td colSpan="6">无</td>
+              <td colSpan="6">
+                <ul>
+                  <li>JSP个人博客</li>
+                  <li>Python数据分析</li>
+                </ul>
+              </td>
             </tr>
           </tbody>
         </table>

@@ -4,6 +4,7 @@ import Code from '../../../assets/code.jpg';
 import Pen from '../../../assets/pen.png';
 import Mail from '../../../assets/mail.png';
 import Welfare from '../../../assets/welfare.png';
+import ReBooksModel from '../../../components/rebooksmodel/rebooksmodel';
 import './rebooks.css';
 import { Avatar, Tag, message } from 'antd';
 import { Link } from 'react-router-dom';
@@ -11,7 +12,8 @@ export default class ReBooks extends Component {
   constructor() {
     super();
     this.state = {
-      pageStatus: 'nochange'
+      pageStatus: 'nochange',
+      visible: [false, false, false, false, false]
     };
   }
   componentDidMount() {
@@ -32,6 +34,22 @@ export default class ReBooks extends Component {
   error = () => {
     message.error('功能还未开发');
   };
+  showModal = index => {
+    var visible = this.state.visible;
+    visible[index] = !this.state.visible[index];
+    this.setState({
+      visible: visible
+    });
+  };
+
+  handleCancel = (index, e) => {
+    console.log(index);
+    var visible = this.state.visible;
+    visible[index] = !this.state.visible[index];
+    this.setState({
+      visible: visible
+    });
+  };
   render() {
     const { booklist } = ReBooksData;
     const { pageStatus } = this.state;
@@ -40,7 +58,11 @@ export default class ReBooks extends Component {
         <div className="book-list">
           {booklist.map((value, index) => {
             return (
-              <div className="book-item" id={`book${index}`}>
+              <div
+                className="book-item"
+                id={`book${index}`}
+                key={`book${index}`}
+              >
                 <img
                   className="book-img"
                   width={120}
@@ -50,7 +72,7 @@ export default class ReBooks extends Component {
                 <div className="book-imfomation">
                   <div className="book-title-container">
                     <Tag color="#f50">预售</Tag>
-                    <Link>
+                    <Link onClick={() => this.showModal(index)}>
                       <p className="book-title">{value.booktitle}</p>
                     </Link>
                   </div>
@@ -74,6 +96,13 @@ export default class ReBooks extends Component {
                     <p className="book-price">{value.bookprice}</p>
                     <p className="book-buyer">{value.bookbuyer}</p>
                   </div>
+                </div>
+                <div>
+                  <ReBooksModel
+                    visible={this.state.visible[index]}
+                    id={`book${index + 1}`}
+                    onCancel={() => this.handleCancel(index)}
+                  />
                 </div>
               </div>
             );
