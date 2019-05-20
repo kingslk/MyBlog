@@ -6,6 +6,7 @@ import Book5 from '../../../assets/books/book5.jpg';
 const rebooksdata = {
   booklist: [
     {
+      id: 'book1',
       bookimg: Book1,
       booktitle: '你不知道的Chrome调试技巧',
       bookintroduction: '熟练掌握Chrome调试技巧，直接提升工作效率',
@@ -16,6 +17,7 @@ const rebooksdata = {
       bookbuyer: '18小节·0人已购买'
     },
     {
+      id: 'book2',
       bookimg: Book2,
       booktitle: '前端面试之道',
       bookintroduction:
@@ -26,6 +28,7 @@ const rebooksdata = {
       bookbuyer: '36小节·阅读时长265分·0人已购买'
     },
     {
+      id: 'book3',
       bookimg: Book3,
       booktitle: 'React实战，设计模式和最佳实践',
       bookintroduction:
@@ -36,6 +39,7 @@ const rebooksdata = {
       bookbuyer: '21小节·阅读时长153分·0人已购买'
     },
     {
+      id: 'book4',
       bookimg: Book4,
       booktitle: 'Taro多端开发实现原理与项目实战',
       bookintroduction:
@@ -46,6 +50,7 @@ const rebooksdata = {
       bookbuyer: '27小节·阅读时长205分·0人已购买'
     },
     {
+      id: 'book5',
       bookimg: Book5,
       booktitle: '前端性能优化原理与实践',
       bookintroduction:

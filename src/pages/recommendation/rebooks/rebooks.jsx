@@ -13,7 +13,8 @@ export default class ReBooks extends Component {
     super();
     this.state = {
       pageStatus: 'nochange',
-      visible: [false, false, false, false, false]
+      visible: [false, false, false, false, false],
+      id: null
     };
   }
   componentDidMount() {
@@ -38,8 +39,10 @@ export default class ReBooks extends Component {
     var visible = this.state.visible;
     visible[index] = !this.state.visible[index];
     this.setState({
-      visible: visible
+      visible: visible,
+      id: `${index + 1}`
     });
+    console.log(`${index + 1}`);
   };
 
   handleCancel = (index, e) => {
@@ -101,6 +104,7 @@ export default class ReBooks extends Component {
                   <ReBooksModel
                     visible={this.state.visible[index]}
                     id={`book${index + 1}`}
+                    id1={`book${this.state.id}`}
                     onCancel={() => this.handleCancel(index)}
                   />
                 </div>
