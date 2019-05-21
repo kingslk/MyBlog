@@ -50,7 +50,7 @@ MyBlog
 
   - ### Menu 导航菜单
 
-    - ![](https://raw.githubusercontent.com/kingslk/MyBlog/master/src/assets/books/book1.jpg)
+    - 图片
 
       - 通过**Menu**导航结合**React-Route-Dom**实现页面不刷新的跳转功能，从而体现 React 作为**单页应用**的特点
 
