@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Modal, Tag, Avatar, Button, Tabs, Empty } from 'antd';
+import { Modal, Tag, Avatar, Button, Tabs, Spin, Icon, Empty } from 'antd';
 import './rebookmodel.css';
 import ReBooksData from '../../pages/recommendation/rebooks/rebooksdata';
 import RebboksModelData from './rebooksmodeldata';
@@ -39,7 +39,6 @@ export default class ReBooksModel extends Component {
         >
           <div className="modal-book-container">
             {booklist.map((value, index) => {
-              console.log(bookid);
               if (value.id === bookid) {
                 return (
                   <div className="model-book-imfomation" key={index}>
@@ -100,42 +99,52 @@ export default class ReBooksModel extends Component {
                     }}
                   />
                   <div>
-                    {bookintroductions.map((value, index) => {
-                      if (value.id === bookid) {
-                        console.log(value.bookcatalogues);
+                    {bookintroductions
+                      .filter(value => value.id === bookid)
+                      .map((value, index) => {
                         return (
-                          <div className="book-catalogue" key={index}>
-                            <div
-                              style={{
-                                display: 'flex',
-                                flexDirection: 'column',
-                                alignItems: 'center'
-                              }}
-                            >
-                              <div className="catalogue-num">{`${index +
-                                1}`}</div>
-                              <div className="catalogue-line" />
-                            </div>
-                            <div
-                              style={{ marginLeft: '20px', marginTop: '6px' }}
-                            >
-                              <p className="catalogue-title">
-                                {value.bookcatalogues[0].catalogues}
-                              </p>
-                              <div className="catalogue-message">
-                                <p>{`时长：${
-                                  value.bookcatalogues.learntime
-                                }`}</p>
-                                <p>{`${
-                                  value.bookcatalogues.readertime
-                                }次阅读`}</p>
-                                <p>0条评论</p>
+                          <div key={index}>
+                            {value.bookcatalogues.map((item, itemIndex) => (
+                              <div className="book-catalogue" key={itemIndex}>
+                                <div
+                                  style={{
+                                    display: 'flex',
+                                    flexDirection: 'column',
+                                    alignItems: 'center'
+                                  }}
+                                >
+                                  <div className="catalogue-num">{`${itemIndex +
+                                    1}`}</div>
+                                  <div className="catalogue-line" />
+                                </div>
+                                <div
+                                  style={{
+                                    marginLeft: '20px',
+                                    marginTop: '6px'
+                                  }}
+                                >
+                                  <p className="catalogue-title">
+                                    {item.catalogues}
+                                  </p>
+                                  <div className="catalogue-message">
+                                    <p>{`时长：${item.readertime}`}</p>
+                                    <p>{`${item.learntime}次阅读`}</p>
+                                    <p>0条评论</p>
+                                  </div>
+                                </div>
                               </div>
-                            </div>
+                            ))}
                           </div>
                         );
-                      }
-                    })}
+                      })}
+                    <div style={{ marginLeft: '18px', marginTop: '10px' }}>
+                      <Spin
+                        indicator={
+                          <Icon type="loading" style={{ fontSize: 24 }} spin />
+                        }
+                      />
+                      <p>查看更多请购买</p>
+                    </div>
                   </div>
                 </TabPane>
                 <TabPane tab="介绍" key="2">
@@ -152,13 +161,11 @@ export default class ReBooksModel extends Component {
                           margin: '20px 0'
                         }}
                       />
-                      <p>
-                        这是一本关于使用 Chrome 调试工具的技巧的介绍，由 Tomek
-                        发布在 Medium上的 “Advent calendar for front-end
-                        developers” 系列为基础，翻译后，重新整合分类，改编而来。
-                        从不同的情景来说明应该如何搭配使用 Chrome DevTools
-                        中的小技巧，有些时候一个技巧可以节省我们很多的时间，也会让调试的过程变得更加简单直接。
-                      </p>
+                      {bookintroductions
+                        .filter(value => value.id === bookid)
+                        .map((value, index) => {
+                          return <p key={index}>{value.bookintroduction}</p>;
+                        })}
                     </div>
                   </div>
                 </TabPane>

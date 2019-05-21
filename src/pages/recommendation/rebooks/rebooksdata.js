@@ -21,7 +21,7 @@ const rebooksdata = {
       bookimg: Book2,
       booktitle: '前端面试之道',
       bookintroduction:
-        '祝你建立起完整的前端知识架构体系，探究知识的原理，深入了解大肠常考知识点',
+        '祝你建立起完整的前端知识架构体系，探究知识原理，深入了解大肠常考知识点',
       bookauthor: 'yck',
       bookauthorintroduction: '宋小菜高级开发，GitHub 15K Start项目作者…',
       bookprice: '￥49.9',

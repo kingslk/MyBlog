@@ -79,9 +79,7 @@ export default class ReWebs extends Component {
                 <div className="rewebs-item" key={index}>
                   <img
                     src={value.webImage}
-                    alt="w3c"
-                    width={120}
-                    height={120}
+                    alt={value.webName}
                     className="web-image"
                   />
                   <div className="web-name-introduction">

@@ -8,7 +8,7 @@
   flex-direction: row;
   justify-content: space-between;
   flex-wrap: wrap;
-  margin: 0 20px
+  margin: 0 20px;
 }
 .rewebs-item {
   display: flex;
@@ -22,10 +22,14 @@
   box-shadow: 3px 4px 12px 0 rgba(0, 0, 0, 0.2);
   border: 1px solid #fff;
   transition: all 1s;
+  width: 140px;
+  height: 140px;
 }
 .web-image {
   border: 1px solid #bcbcbc;
   transition: all 1s;
+  width: 120px;
+  height: 120px;
 }
 .web-name-introduction {
   display: flex;
