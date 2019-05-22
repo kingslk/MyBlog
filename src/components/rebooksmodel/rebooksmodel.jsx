@@ -50,7 +50,7 @@ export default class ReBooksModel extends Component {
                     />
                     <div style={{ marginLeft: '20px', marginBottom: '2px' }}>
                       <div className="model-book-title-container">
-                        <Tag color="#f50">#f50</Tag>
+                        <Tag color="#f50">预售</Tag>
                         <p className="modal-book-title">{value.booktitle}</p>
                       </div>
                       <p className="modal-book-introduction">
