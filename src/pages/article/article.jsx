@@ -10,7 +10,7 @@ export default class Article extends Component {
         style={{
           minHeight: '300px',
           minWidth: '1000px',
-          margin: '30px auto',
+          margin: '80px auto',
           border: '1px solid'
         }}
       >

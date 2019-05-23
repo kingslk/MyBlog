@@ -19,9 +19,6 @@ MyBlog
 ├── components
 │   ├── aboutmenavigation
 │   ├── articlelist
-│   ├── article
-│   │    ├──articlewithtext
-│   │    └──articlewithvideo
 │   ├── bookintroduction
 │   ├── mine
 │   ├── navigation
@@ -34,6 +31,8 @@ MyBlog
 │   │   ├──connection
 │   │   ├──favorite
 │   │   └──introduction
+│   ├── article
+│   ├── videopage
 │   ├── antintroduction
 │   ├── main
 │   └── recommendation

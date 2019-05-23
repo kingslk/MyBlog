@@ -5,32 +5,29 @@ class nestjs extends Component {
   constructor() {
     super();
     this.state = {
-      follow: true,
-      pageStatus: 'nochange'
+      follow: true
+      // pageStatus: 'nochange'
     };
   }
-  componentDidMount() {
-    window.addEventListener('scroll', this.handleScroll);
-  }
-  handleScroll = e => {
-    let ctx = this;
-    if (document.documentElement.scrollTop >= 100) {
-      ctx.setState({
-        pageStatus: 'change'
-      });
-    } else {
-      ctx.setState({
-        pageStatus: 'nochange'
-      });
-    }
-  };
+  // componentDidMount() {
+  //   window.addEventListener('scroll', this.handleScroll);
+  // }
+  // handleScroll = e => {
+  //   let ctx = this;
+  //   if (document.documentElement.scrollTop >= 100) {
+  //     ctx.setState({
+  //       pageStatus: 'change'
+  //     });
+  //   } else {
+  //     ctx.setState({
+  //       pageStatus: 'nochange'
+  //     });
+  //   }
+  // };
   render() {
-    const { follow, pageStatus } = this.state;
+    const { follow } = this.state;
     return (
-      <div
-        className={pageStatus === 'nochange' ? 'nestjs-before' : 'nestjs-after'}
-        style={{ position: 'fixed' }}
-      >
+      <div className="nestjs-before" style={{ position: 'fixed' }}>
         <ReactCanvasNest
           className="canvasNest"
           config={{
