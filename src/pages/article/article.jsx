@@ -1,7 +1,24 @@
 import React, { Component } from 'react';
-import { Button } from 'antd';
+import remark from 'remark';
+import remark2react from 'remark-react';
+import { Breadcrumb, Button } from 'antd';
+import ArticleData from './articledata';
+import './article.css';
 export default class Article extends Component {
+  constructor() {
+    super();
+    this.state = {
+      articleid: null
+    };
+  }
+  componentWillMount() {
+    this.setState({
+      articleid: this.props.match.params.articleid
+    });
+  }
   render() {
+    const { articlecontents } = ArticleData;
+    const { articleid } = this.state;
     const {
       history: { push }
     } = this.props;
@@ -9,15 +26,43 @@ export default class Article extends Component {
       <div
         style={{
           minHeight: '300px',
-          minWidth: '1000px',
+          Width: '800px',
           margin: '80px auto',
-          border: '1px solid'
+          zIndex: 2
         }}
       >
-        文章详情
-        <Button onClick={() => push(`main`)} type="primary">
-          aaaaaa
-        </Button>
+        {articlecontents
+          .filter(value => value.articleid === articleid)
+          .map((value, index) => {
+            return (
+              <div key={value.articleid}>
+                <Breadcrumb style={{ margin: '30px', fontSize: '20px' }}>
+                  <Breadcrumb.Item>
+                    <a onClick={() => push(`/`)}>Home</a>
+                  </Breadcrumb.Item>
+                  <Breadcrumb.Item>{value.articlename}</Breadcrumb.Item>
+                </Breadcrumb>
+                <h1 style={{ textAlign: 'center' }}>{value.articlename}</h1>
+                <div
+                  style={{ display: 'flex', justifyContent: 'space-around' }}
+                >
+                  <p style={{ fontSize: '24px', fontWeight: 'bold' }}>
+                    {value.articledate}
+                  </p>
+                  <p style={{ fontSize: '24px', fontWeight: 'bold' }}>
+                    {value.articleclassification}
+                  </p>
+                </div>
+                <div style={{ margin: 'auto' }} key={articleid}>
+                  {
+                    remark()
+                      .use(remark2react)
+                      .processSync(value.articlecontent).contents
+                  }
+                </div>
+              </div>
+            );
+          })}
       </div>
     );
   }

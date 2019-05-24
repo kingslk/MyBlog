@@ -6,12 +6,12 @@ import ArticleListeData from './articlelistdata';
 export default class ArticleList extends Component {
   render() {
     const Panel = Collapse.Panel;
-    const { finalProjects, primarySchool } = ArticleListeData;
+    const { finalProjects, technicalArticles } = ArticleListeData;
     return (
       <div
         style={{
           marginTop: '10px',
-          marginLeft: '12px',
+          marginLeft: '12px'
         }}
       >
         <Collapse bordered={false} defaultActiveKey={['1']}>
@@ -21,8 +21,16 @@ export default class ArticleList extends Component {
                 {finalProjects.map((value, index) => {
                   return (
                     <Timeline.Item key={index}>
-                      <Link to="article" style={{ color: 'red' }}>
-                        {`${value.finalprojectname}${value.finalprojectdate}`}
+                      <Link to={`article/${value.articleid}`}>
+                        <div
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'space-between'
+                          }}
+                        >
+                          <div>{value.finalprojectname}</div>
+                          <div>{value.finalprojectdate}</div>
+                        </div>
                       </Link>
                     </Timeline.Item>
                   );
@@ -30,14 +38,22 @@ export default class ArticleList extends Component {
               </Timeline>
             </div>
           </Panel>
-          <Panel header="小学期作品" key="2">
+          <Panel header="技术文章" key="2">
             <div className="articlelist">
               <Timeline>
-                {primarySchool.map((value, index) => {
+                {technicalArticles.map((value, index) => {
                   return (
                     <Timeline.Item key={index}>
-                      <Link to="article" style={{ color: 'red' }}>
-                        {`${value.primaryschoolname}${value.primaryschooldate}`}
+                      <Link to={`article/${value.articleid}`}>
+                        <div
+                          style={{
+                            display: 'flex',
+                            justifyContent: 'space-between'
+                          }}
+                        >
+                          <div>{value.technicalArticlesName}</div>
+                          <div>{value.technicalArticlesdate}</div>
+                        </div>
                       </Link>
                     </Timeline.Item>
                   );

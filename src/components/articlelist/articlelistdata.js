@@ -1,13 +1,22 @@
 const articlelistdata = {
   finalProjects: [
-    { finalprojectname: '期末项目', finalprojectdate: '2018-1-1' },
-    { finalprojectname: '期末项目', finalprojectdate: '2018-1-1' },
-    { finalprojectname: '期末项目', finalprojectdate: '2018-1-1' }
+    {
+      articleid: 'article1',
+      finalprojectname: 'Python期末项目',
+      finalprojectdate: '2018.12.17'
+    },
+    {
+      articleid: 'article2',
+      finalprojectname: 'JSP期末项目',
+      finalprojectdate: '2018.12.15'
+    }
   ],
-  primarySchool: [
-    { primaryschoolname: '小学期作业', primaryschooldate: '2018-1-1' },
-    { primaryschoolname: '小学期作业', primaryschooldate: '2018-1-1' },
-    { primaryschoolname: '小学期作业', primaryschooldate: '2018-1-1' }
+  technicalArticles: [
+    {
+      articleid: 'article3',
+      technicalArticlesName: 'React-Native学习指导',
+      technicalArticlesdate: '2019.5.22'
+    }
   ]
 };
-export default articlelistdata
+export default articlelistdata;

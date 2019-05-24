@@ -63,7 +63,7 @@ export default class Main extends Component {
                   placement="right"
                   content={
                     <div style={{ width: '900px' }}>
-                      <Link to="article">
+                      <Link to={`article/article${index + 1}`}>
                         <Tooltip title="点我查看详情" placement="rightTop">
                           <label className="article-name">
                             {value.articletitle}
