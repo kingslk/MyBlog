@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Layout } from 'antd';
 import { Route, Switch, Redirect } from 'react-router-dom';
 import './aboutMe.css';
+import Head from '../../assets/head.jpg';
 import AboutMeNavigation from '../../components/aboutmenavigation/aboutmenavigation';
 import Introduction from './introduction/introduction';
 import Ability from './ability/ability';
@@ -19,7 +20,9 @@ export default class AboutMe extends Component {
         <div className="aboutMe-flex">
           <div className="aboutMe-left">
             <div className="aboutMe-header-bg">
-              <div className="aboutMe-header" />
+              <div className="aboutMe-header">
+                <img src={Head} alt="头像" width={75} />
+              </div>
             </div>
             <Sider className="nav-menu" width={120}>
               <AboutMeNavigation location={location} />

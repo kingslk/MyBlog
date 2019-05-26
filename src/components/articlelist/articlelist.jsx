@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import { Collapse, Timeline } from 'antd';
 import './articlelist.css';
 import ArticleListeData from './articlelistdata';
@@ -7,6 +6,7 @@ export default class ArticleList extends Component {
   render() {
     const Panel = Collapse.Panel;
     const { finalProjects, technicalArticles } = ArticleListeData;
+    const { history } = this.props;
     return (
       <div
         style={{
@@ -21,7 +21,12 @@ export default class ArticleList extends Component {
                 {finalProjects.map((value, index) => {
                   return (
                     <Timeline.Item key={index}>
-                      <Link to={`article/${value.articleid}`}>
+                      <span
+                        className="span-a"
+                        onClick={() =>
+                          history.push(`/home/article/${value.articleid}`)
+                        }
+                      >
                         <div
                           style={{
                             display: 'flex',
@@ -31,7 +36,7 @@ export default class ArticleList extends Component {
                           <div>{value.finalprojectname}</div>
                           <div>{value.finalprojectdate}</div>
                         </div>
-                      </Link>
+                      </span>
                     </Timeline.Item>
                   );
                 })}
@@ -44,7 +49,12 @@ export default class ArticleList extends Component {
                 {technicalArticles.map((value, index) => {
                   return (
                     <Timeline.Item key={index}>
-                      <Link to={`article/${value.articleid}`}>
+                      <span
+                        className="span-a"
+                        onClick={() =>
+                          history.push(`/home/article/${value.articleid}`)
+                        }
+                      >
                         <div
                           style={{
                             display: 'flex',
@@ -54,7 +64,7 @@ export default class ArticleList extends Component {
                           <div>{value.technicalArticlesName}</div>
                           <div>{value.technicalArticlesdate}</div>
                         </div>
-                      </Link>
+                      </span>
                     </Timeline.Item>
                   );
                 })}

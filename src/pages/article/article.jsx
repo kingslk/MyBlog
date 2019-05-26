@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import remark from 'remark';
 import remark2react from 'remark-react';
-import { Breadcrumb, Button } from 'antd';
+import { Breadcrumb } from 'antd';
 import ArticleData from './articledata';
 import './article.css';
 export default class Article extends Component {
@@ -38,7 +38,7 @@ export default class Article extends Component {
               <div key={value.articleid}>
                 <Breadcrumb style={{ margin: '30px', fontSize: '20px' }}>
                   <Breadcrumb.Item>
-                    <a onClick={() => push(`/`)}>Home</a>
+                    <span style={{cursor:'pointer'}} onClick={() => push(`/`)}>Home</span>
                   </Breadcrumb.Item>
                   <Breadcrumb.Item>{value.articlename}</Breadcrumb.Item>
                 </Breadcrumb>

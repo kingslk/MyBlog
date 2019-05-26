@@ -9,6 +9,7 @@ export default class MainIndex extends Component {
     const {
       match: { url }
     } = this.props;
+    const { history } = this.props;
     return (
       <div style={{ display: 'flex' }}>
         <Switch>
@@ -18,7 +19,7 @@ export default class MainIndex extends Component {
         </Switch>
         <div style={{ display: 'flex', flexDirection: 'column', width: '31%' }}>
           <Mine />
-          <ArticleList />
+          <ArticleList history={history} />
         </div>
       </div>
     );

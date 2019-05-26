@@ -17,11 +17,11 @@
   border-top-left-radius: 20px;
   border-bottom-left-radius: 20px;
 }
-.aboutMe-header-bg{
+.aboutMe-header-bg {
   border: 1px solid;
   width: 120px;
   border-top-left-radius: 20px;
-  background: white
+  background: white;
 }
 .aboutMe-header {
   width: 100px;
@@ -29,6 +29,10 @@
   border-radius: 100px;
   border: 1px solid;
   margin: 10px;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 .nav-menu {
   display: flex;

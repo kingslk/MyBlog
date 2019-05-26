@@ -9,3 +9,13 @@
   z-index: 2;
   position: relative;
 }
+.span-a {
+  cursor: pointer;
+  color: #3894de;
+  transition: all 1s;
+}
+.span-a:hover {
+  cursor: pointer;
+  color: #005bd7;
+  transition: all 1s;
+}

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import './mine.css';
 import { Icon, Tooltip, Typography } from 'antd';
+import Head from '../../assets/head.jpg';
 export default class Mine extends Component {
   constructor() {
     super();
@@ -17,7 +18,7 @@ export default class Mine extends Component {
     return (
       <div className="mine-container">
         <div className="head">
-          <img alt="头像" />
+          <img alt="头像" src={Head} width={110} />
         </div>
 
         <div className="location">

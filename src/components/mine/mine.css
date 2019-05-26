@@ -11,6 +11,10 @@
   border-radius: 150px;
   border: 1px solid;
   margin: 24px auto;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 .location {
   width: 100px;
