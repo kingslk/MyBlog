@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
-import remark from 'remark';
-import remark2react from 'remark-react';
 import './antintroduction.css';
 import MarkDownData from './antintroductiondata';
+// 导入解析MarkDown的第三方库
+import remark from 'remark';
+import remark2react from 'remark-react';
+import { BackTop } from 'antd';
 export default class AntIntroduction extends Component {
   constructor() {
     super();
@@ -20,11 +22,15 @@ export default class AntIntroduction extends Component {
           padding: '10px'
         }}
       >
+        <BackTop>
+          <div className="ant-back-top-inner">UP</div>
+        </BackTop>
         <div
           id="preview"
           style={{ zIndex: '2', margin: 'auto', width: '1000px' }}
         >
           {
+            // 对MarkDown语法的解析
             remark()
               .use(remark2react)
               .processSync(MarkDownData).contents

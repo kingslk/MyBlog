@@ -26,6 +26,7 @@ export default class ReWebs extends Component {
           }}
         />
         <div className="allrewebs-container">
+          {/* 通过map遍历假数据，渲染推荐网站 */}
           {weblist.map((value, index) => {
             return (
               <div className="rewebs-item" key={index}>
@@ -40,6 +41,7 @@ export default class ReWebs extends Component {
                   <a
                     href={`${value.webLinkTo}`}
                     target="_Blank"
+                    // 阻止react的a标签警告
                     rel="noopener noreferrer"
                     className="web-name"
                   >
@@ -73,8 +75,10 @@ export default class ReWebs extends Component {
           }}
         />
         <div className="allrewebs-container">
-          {weblist.map((value, index) => {
-            if (value.useful === true) {
+          {weblist
+            .filter(value => value.useful === true)
+            .map((value, index) => {
+              // 当value.useful为true时才进行渲染
               return (
                 <div className="rewebs-item" key={index}>
                   <img
@@ -97,9 +101,7 @@ export default class ReWebs extends Component {
                   </div>
                 </div>
               );
-            }
-            return null;
-          })}
+            })}
         </div>
       </div>
     );

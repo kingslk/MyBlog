@@ -28,6 +28,7 @@ class nestjs extends Component {
     const { follow } = this.state;
     return (
       <div className="nestjs-before" style={{ position: 'fixed' }}>
+        {/* 使用第三方库react-nestjs，实现网页背景 */}
         <ReactCanvasNest
           className="canvasNest"
           config={{

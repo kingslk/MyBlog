@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import './mine.css';
-import { Icon, Tooltip, Typography } from 'antd';
 import Head from '../../assets/head.jpg';
+import { Icon, Tooltip, Typography } from 'antd';
 export default class Mine extends Component {
   constructor() {
     super();
+    // 设定页面state
     this.state = {
       zhihu: '知乎',
       github: 'github',
@@ -13,15 +14,17 @@ export default class Mine extends Component {
     };
   }
   render() {
+    // 在页面中调用声明的state
     const { zhihu, github, facebook, myLocation } = this.state;
+    // 使用Antd的Text标签编写文字
     const { Text } = Typography;
     return (
       <div className="mine-container">
         <div className="head">
           <img alt="头像" src={Head} width={110} />
         </div>
-
         <div className="location">
+          {/* 鼠标hover时显示Tooltip文字提示 */}
           <Tooltip title={myLocation}>
             <Icon
               type="environment"
@@ -43,18 +46,31 @@ export default class Mine extends Component {
           </p>
         </div>
         <div style={{ display: 'flex', height: '60px' }}>
-          <Text className="text-container">文章：10</Text>
+          <Text className="text-container">文章：4</Text>
           <Text className="text-container">浏览量：999</Text>
         </div>
         <div className="my-link">
+          {/* 鼠标hover时显示Toolitip文字提示*/}
           <Tooltip title={zhihu}>
-            <Icon type="zhihu" className="icon-link" />
+            <Icon
+              type="zhihu"
+              className="icon-link"
+              onClick={() => window.open('https://www.zhihu.com/')}
+            />
           </Tooltip>
           <Tooltip title={github}>
-            <Icon type="github" className="icon-link" />
+            <Icon
+              type="github"
+              className="icon-link"
+              onClick={() => window.open('https://github.com/kingslk')}
+            />
           </Tooltip>
           <Tooltip title={facebook}>
-            <Icon type="facebook" className="icon-link" />
+            <Icon
+              type="facebook"
+              className="icon-link"
+              onClick={() => window.open('www.facebook.com')}
+            />
           </Tooltip>
         </div>
       </div>

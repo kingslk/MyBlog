@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import { Upload, Icon, message, Tooltip } from 'antd';
-import FirstHead from '../../../assets/books/book1.jpg';
 import './introduction.css';
+import FirstHead from '../../../assets/books/book1.jpg';
+import { Upload, Icon, message, Tooltip } from 'antd';
 
 export default class introduction extends Component {
   constructor() {
@@ -11,12 +11,13 @@ export default class introduction extends Component {
       imageUrl: FirstHead
     };
   }
+  // 上传图片并在网页中显示
   getBase64(img, callback) {
     const reader = new FileReader();
     reader.addEventListener('load', () => callback(reader.result));
     reader.readAsDataURL(img);
   }
-
+  // 限制图片上传格式及大小
   beforeUpload(file) {
     const isJPG = file.type === 'image/jpeg';
     if (!isJPG) {
@@ -28,6 +29,7 @@ export default class introduction extends Component {
     }
     return isJPG && isLt2M;
   }
+  // 该表图片上传状态
   handleChange = info => {
     if (info.file.status === 'uploading') {
       this.setState({ loading: true });
@@ -44,6 +46,7 @@ export default class introduction extends Component {
     }
   };
   render() {
+    // 声明上传按钮
     const uploadButton = (
       <div>
         <Icon type={this.state.loading ? 'loading' : 'plus'} />
@@ -54,7 +57,6 @@ export default class introduction extends Component {
     return (
       <div style={{ margin: '30px auto', position: 'relative' }}>
         <h1 className="introduction-title">个人简历</h1>
-
         <table border="1px" style={{ width: '700px', minHeight: '500px' }}>
           <tbody>
             <tr>
@@ -65,6 +67,7 @@ export default class introduction extends Component {
               <td style={{ width: '10%' }}>性别</td>
               <td style={{ width: '10%' }}>男</td>
               <td rowSpan="4" style={{ width: '30%' }}>
+                {/* 使用Antd封装的Upload上传组件，并通过调用图片上传方法实现图片的上传 */}
                 <Upload
                   name="avatar"
                   listType="picture-card"
@@ -75,6 +78,7 @@ export default class introduction extends Component {
                   onChange={this.handleChange}
                 >
                   {imageUrl ? (
+                    // 通过hover时间显示Tooltip标签中title的内容
                     <Tooltip title="点击切换头像">
                       <img
                         src={imageUrl}

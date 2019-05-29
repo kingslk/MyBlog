@@ -18,9 +18,9 @@ export default class favorite extends Component {
       pageStatus: false
     };
   }
+  // 以下四个函数为控制页面拖拽的函数
   allowdrop = e => {
     e.preventDefault();
-    console.log('aaa');
   };
   drag = () => {
     var data = this.state.favorites;
@@ -53,6 +53,7 @@ export default class favorite extends Component {
           onDrop={this.drop}
           onDragOver={this.allowdrop}
         >
+          {/* 监听页面状态该表，当拖拽行为发生时，改变class */}
           <Tag
             color="magenta"
             className={pageStatus === false ? 'tag-list' : 'tag-list tag-one'}

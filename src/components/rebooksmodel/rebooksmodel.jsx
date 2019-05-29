@@ -1,33 +1,85 @@
 import React, { Component } from 'react';
-import { Modal, Tag, Avatar, Button, Tabs, Spin, Icon, Empty } from 'antd';
 import './rebookmodel.css';
+import {
+  Modal,
+  Tag,
+  Avatar,
+  Button,
+  Tabs,
+  Spin,
+  Icon,
+  Empty,
+  Input,
+  Tooltip
+} from 'antd';
 import ReBooksData from '../../pages/recommendation/rebooks/rebooksdata';
 import RebboksModelData from './rebooksmodeldata';
+// 使用Antd的Tabs标签页前的必要声明
 const TabPane = Tabs.TabPane;
 export default class ReBooksModel extends Component {
   constructor() {
     super();
-    this.state = { bookid: null };
+    this.state = {
+      comment: '',
+      comments: []
+    };
   }
   componentWillMount() {
+    if (localStorage.getItem(`comments${this.props.id}`) !== null) {
+      console.log(JSON.parse(localStorage.getItem(`comments${this.props.id}`)));
+      this.setState({
+        comments: JSON.parse(localStorage.getItem(`comments${this.props.id}`))
+      });
+    }
+  }
+  // componentWillUpdata(nextProps) {
+  //   if (localStorage.getItem(`comments${this.props.id}`) !== null) {
+  //     console.log(JSON.parse(localStorage.getItem(`comments${this.props.id}`)));
+  //     this.setState({
+  //       comments: JSON.parse(localStorage.getItem(`comments${this.props.id}`))
+  //     });
+  //   }
+  // }
+  componentWillReceiveProps(nextProps) {
     this.setState({
-      bookid: this.props.id
+      comments:
+        JSON.parse(localStorage.getItem(`comments${nextProps.id}`)) || []
     });
   }
   handleOk = e => {
     console.log(e);
   };
-
+  // 接收上一个页面传递的关闭Model的方法
   handleCancel = e => {
-    console.log('cancel');
     this.props.onCancel();
-    // console.log(object)
+    console.log(`book${this.props.id}`);
+    this.setState({
+      comments: []
+    });
   };
-
+  onchange = e => {
+    this.setState({
+      comment: e.target.value
+    });
+  };
+  onsubmit = () => {
+    const { comment, comments } = this.state;
+    console.log(this.state);
+    comments.push(comment);
+    if (comment !== '') {
+      this.setState({
+        comments: comments,
+        comment: ''
+      });
+    } else {
+      console.log(123);
+    }
+    localStorage.setItem(`comments${this.props.id}`, JSON.stringify(comments));
+  };
   render() {
-    const { bookid } = this.state;
     const { booklist } = ReBooksData;
     const { bookintroductions } = RebboksModelData;
+    const { comments } = this.state;
     return (
       <div>
         <Modal
@@ -38,8 +90,10 @@ export default class ReBooksModel extends Component {
           width={800}
         >
           <div className="modal-book-container">
-            {booklist.map((value, index) => {
-              if (value.id === bookid) {
+            {/* 通过map遍历假数据，当假数据中的id与上一个页面传递过来的id相同时，展示数据 */}
+            {booklist
+              .filter(value => value.id === `book${this.props.id}`)
+              .map((value, index) => {
                 return (
                   <div className="model-book-imfomation" key={index}>
                     <img
@@ -57,6 +111,7 @@ export default class ReBooksModel extends Component {
                         {value.bookintroduction}
                       </p>
                       <div className="model-book-author-container">
+                        {/* 使用Antd的Avatar头像组件 */}
                         <Avatar
                           style={{
                             backgroundColor: '#7265e6',
@@ -81,11 +136,10 @@ export default class ReBooksModel extends Component {
                     </div>
                   </div>
                 );
-              }
-              return null;
-            })}
+              })}
             <div>
               <Tabs defaultActiveKey="1">
+                {/* TabPane为标签页的分栏 */}
                 <TabPane tab="目录" key="1">
                   <p style={{ fontSize: '20px', marginLeft: '10px' }}>
                     书籍目录
@@ -99,8 +153,9 @@ export default class ReBooksModel extends Component {
                     }}
                   />
                   <div>
+                    {/* 通过filter处理假数据中的数组，id与上一个页面传递过来的id相同，再进行map遍历 */}
                     {bookintroductions
-                      .filter(value => value.id === bookid)
+                      .filter(value => value.id === `book${this.props.id}`)
                       .map((value, index) => {
                         return (
                           <div key={index}>
@@ -138,6 +193,7 @@ export default class ReBooksModel extends Component {
                         );
                       })}
                     <div style={{ marginLeft: '18px', marginTop: '10px' }}>
+                      {/* 时间轴下方的旋转图标 */}
                       <Spin
                         indicator={
                           <Icon type="loading" style={{ fontSize: 24 }} spin />
@@ -161,8 +217,9 @@ export default class ReBooksModel extends Component {
                           margin: '20px 0'
                         }}
                       />
+                      {/* 通过filter处理假数据中的数组，id与上一个页面传递过来的id相同，再进行map遍历 */}
                       {bookintroductions
-                        .filter(value => value.id === bookid)
+                        .filter(value => value.id === `book${this.props.id}`)
                         .map((value, index) => {
                           return <p key={index}>{value.bookintroduction}</p>;
                         })}
@@ -170,7 +227,35 @@ export default class ReBooksModel extends Component {
                   </div>
                 </TabPane>
                 <TabPane tab="评论" key="3">
-                  <Empty description="暂无评论" />
+                  {/* 使用Antd的Empty空状态标签，当没有评论时进行显示 */}
+                  {comments.length !== 0 ? (
+                    comments.map((value, index) => {
+                      return <div key={index}>{value}</div>;
+                    })
+                  ) : (
+                    <Empty description="暂无评论" />
+                  )}
+
+                  <div style={{ display: 'flex', justifyContent: 'center' }}>
+                    <Tooltip
+                      trigger={['focus']}
+                      title={'请输入评论'}
+                      placement="topLeft"
+                      overlayClassName="numeric-input"
+                    >
+                      <Input
+                        onChange={this.onchange}
+                        placeholder="请输入你的评论"
+                        maxLength={25}
+                        value={this.state.comment}
+                        style={{ width: '56%' }}
+                      />
+                    </Tooltip>
+
+                    <Button onClick={this.onsubmit} type="primary">
+                      提交
+                    </Button>
+                  </div>
                 </TabPane>
               </Tabs>
             </div>

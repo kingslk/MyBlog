@@ -1,15 +1,17 @@
 import React, { Component } from 'react';
-import { Icon, Tooltip } from 'antd';
-import { Link } from 'react-router-dom';
 import './aboutmenavigation.css';
+import { Link } from 'react-router-dom';
+import { Icon, Tooltip } from 'antd';
 
 export default class AboutMeNavigation extends Component {
   render() {
+    // 获取浏览器url
     const {
       location: { pathname }
     } = this.props;
     return (
       <div>
+        {/* 使用三目运算符判断url，从而改变Link变器的css样式 */}
         <Link
           to="introduction"
           className={
@@ -18,6 +20,7 @@ export default class AboutMeNavigation extends Component {
               : 'nav-item'
           }
         >
+          {/* 鼠标hover时显示title内的内容 */}
           <Tooltip title="个人简历" placement="rightTop">
             <Icon className="aboutMe-icon" type="snippets" />
           </Tooltip>

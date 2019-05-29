@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-import AbilityData from './abilitydata';
 import './ability.css';
+import AbilityData from './abilitydata';
 import { Progress, Statistic, Card, Row, Col, Icon } from 'antd';
 export default class ability extends Component {
   render() {
@@ -9,6 +9,7 @@ export default class ability extends Component {
     return (
       <div className="ability-container">
         <p className="ability-title">能力分析</p>
+        {/* 通过map遍历假数据并使用Progress进度条显示能力分析 */}
         {abilityList.map((value, index) => {
           return (
             <div key={index}>
@@ -26,6 +27,7 @@ export default class ability extends Component {
           <Row gutter={16}>
             <Col span={12}>
               <Card>
+                {/* 通过Statistic统计数值显示近期学期情况 */}
                 <Statistic
                   title="React-Native"
                   value={25.25}
