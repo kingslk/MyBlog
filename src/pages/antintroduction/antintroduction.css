@@ -62,7 +62,6 @@ ol {
   padding: 0;
   padding-left: 24px;
   margin: 0;
-  /* background: red */
 }
 
 p,
@@ -70,13 +69,13 @@ ul,
 ol {
   font-size: 16px;
   line-height: 24px;
+  font-weight: bold;
 }
 
 ol ol,
 ul ol {
   list-style-type: lower-roman;
 }
-
 
 pre {
   padding: 0px 24px;

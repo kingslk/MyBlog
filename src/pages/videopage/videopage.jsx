@@ -1,33 +1,60 @@
 import React, { Component } from 'react';
-import { Input, Button } from 'antd';
-
+import './videopage.css';
+import TestVideo from '../../assets/lotus.mp4';
+import ReactPlayer from 'react-player';
 export default class videopage extends Component {
   constructor() {
     super();
     this.state = {
-      comment: '',
-      comments: []
+      titleStatus: false,
+      contentStatus: false,
+      messageStatus: false
     };
   }
-  onchange = e => {
-    this.setState({
-      comment: e.target.value
-    });
-  };
-  onsubmit = () => {
-    const { comment, comments } = this.state;
-    comments.push(comment);
-    console.log(this.state);
-    this.setState({
-      comments: comments
-    });
-    console.log(comments);
-  };
+  componentWillMount() {
+    setTimeout(() => {
+      this.setState({ titleStatus: !this.state.titleStatus });
+    }, 1000);
+    setTimeout(
+      () => this.setState({ contentStatus: !this.state.contentStatus }),
+      1500
+    );
+    setTimeout(
+      () => this.setState({ messageStatus: !this.state.messageStatus }),
+      2000
+    );
+  }
+
   render() {
+    const { titleStatus, contentStatus, messageStatus } = this.state;
+    console.log(titleStatus);
     return (
-      <div style={{ margin: '80px auto', zIndex: 30, position: 'absolute' }}>
-        <Input onChange={this.onchange} />
-        <Button title="aaa" onClick={this.onsubmit} />
+      <div className="video-container">
+        <div style={{ width: '60%', zIndex: 2 }}>
+          <h1 className={titleStatus === false ? 'video-title' : 'show-title'}>
+            ddd
+          </h1>
+          <div>
+            <div
+              className={
+                contentStatus === false ? 'video-content' : 'show-content'
+              }
+            >
+              ddddddddddddddddddddddddd
+            </div>
+            <div
+              className={
+                messageStatus === false ? 'video-message' : 'show-message'
+              }
+            >
+              <span>2019.1.15</span>
+              <span>3dsmax小学期作品</span>
+            </div>
+          </div>
+          {/* <ReactPlayer url={(src = '../../assets/lotus.mp4')} controls /> */}
+          {/* <ReactPlayer url={require('../../assets/lotus.mp4')} /> */}
+          <video src={TestVideo} />
+        </div>
       </div>
     );
   }

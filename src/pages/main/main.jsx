@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Button, Timeline, Popover, Icon, Tooltip } from 'antd';
+import { Button, Timeline, Popover, Icon, Tooltip, message } from 'antd';
 import { Link } from 'react-router-dom';
 import './main.css';
 import MainData from './maindata';
@@ -11,9 +11,9 @@ export default class Main extends Component {
   constructor() {
     super();
     this.state = {
-      showWeiXin: [false, false, false, false],
-      showQQ: [false, false, false, false],
-      showWeibo: [false, false, false, false],
+      showWeiXin: [false, false, false, false, false],
+      showQQ: [false, false, false, false, false],
+      showWeibo: [false, false, false, false, false],
       articleList: null
     };
   }
@@ -47,6 +47,9 @@ export default class Main extends Component {
       showQQ: showQQ,
       showWeibo: showWeibo
     });
+  };
+  err = () => {
+    message.error('需要后台');
   };
   render() {
     const { showWeiXin, showQQ, showWeibo, articleList } = this.state;
@@ -101,6 +104,7 @@ export default class Main extends Component {
                               ? 'share-by-weixin'
                               : 'share-by-weixin-after'
                           }
+                          onClick={this.err}
                         >
                           <img src={WeiXin} width={30} alt="微信" />
                         </div>
@@ -110,6 +114,7 @@ export default class Main extends Component {
                               ? 'share-by-qq'
                               : 'share-by-qq-after'
                           }
+                          onClick={this.err}
                         >
                           <img src={QQ} width={30} alt="qq" />
                         </div>
@@ -119,6 +124,7 @@ export default class Main extends Component {
                               ? 'share-by-weibo'
                               : 'share-by-weibo-after'
                           }
+                          onClick={this.err}
                         >
                           <img src={WeiBo} width={30} alt="weibo" />
                         </div>

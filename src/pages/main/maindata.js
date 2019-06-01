@@ -20,6 +20,19 @@ const maindata = {
       articleclassification: '技术文章',
       articleintroduction:
         'React-Native学习指南，给想学习App开发的朋友提供帮助……'
+    },
+    {
+      articletitle: 'CSS-Flex布局教程',
+      articledate: '2019.5.22',
+      articleclassification: '技术文章',
+      articleintroduction: '一个适应性更强的弹性布局，减少适配的烦恼……'
+    },
+    {
+      articletitle: 'React-Router了解一下',
+      articledate: '2019.5.22',
+      articleclassification: '技术文章',
+      articleintroduction:
+        '一个专门为React设计的路由组件，实现React的局部渲染……'
     }
   ]
 };

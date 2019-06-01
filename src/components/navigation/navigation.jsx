@@ -25,7 +25,7 @@ class navigation extends Component {
   // 设置监听函数，通过监听页面高度的变化，改变state的状态
   handleScroll = e => {
     let ctx = this;
-    if (document.documentElement.scrollTop >= 100) {
+    if (document.documentElement.scrollTop >= 80) {
       ctx.setState({
         pageStatus: 'change'
       });
@@ -35,15 +35,15 @@ class navigation extends Component {
       });
     }
   };
+  openNotificationWithIcon = type => {
+    notification[type]({
+      message: '警告',
+      description: '更多功能敬请期待'
+    });
+  };
   render() {
     const { pageStatus } = this.state;
     // 使用Antd的Notification通知提示框显示页面的全局警告信息
-    const openNotificationWithIcon = type => {
-      notification[type]({
-        message: '警告',
-        description: '更多功能敬请期待'
-      });
-    };
     return (
       <div>
         <Menu
@@ -78,7 +78,7 @@ class navigation extends Component {
           <Menu.Item
             key="more"
             // 打开通知提醒框
-            onClick={() => openNotificationWithIcon('info')}
+            onClick={() => this.openNotificationWithIcon('info')}
           >
             更多
           </Menu.Item>

@@ -1,0 +1,48 @@
+.video-container {
+  margin: 80px auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  align-items: center;
+}
+.show-title {
+  text-align: center;
+  transition: all 1s;
+  transform: translateY(0px);
+  opacity: 1;
+}
+.show-content {
+  text-align: center;
+  transition: all 1s;
+  opacity: 1;
+  transform: translateX(0px);
+}
+.show-message {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  transition: all 1s;
+  transform: translateY(0px);
+  opacity: 1;
+}
+.video-title {
+  text-align: center;
+  transition: all 1s;
+  transform: translateY(-80px);
+  opacity: 0;
+}
+.video-content {
+  text-align: center;
+  transition: all 1s;
+  opacity: 0;
+  transform: translateX(-80px);
+}
+.video-message {
+  display: flex;
+  justify-content: space-around;
+  margin: 10px;
+  transition: all 1s;
+  transform: translateY(80px);
+  opacity: 0;
+}

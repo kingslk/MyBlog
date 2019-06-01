@@ -10,7 +10,9 @@ import {
   Icon,
   Empty,
   Input,
-  Tooltip
+  Tooltip,
+  message,
+  Divider
 } from 'antd';
 import ReBooksData from '../../pages/recommendation/rebooks/rebooksdata';
 import RebboksModelData from './rebooksmodeldata';
@@ -32,14 +34,7 @@ export default class ReBooksModel extends Component {
       });
     }
   }
-  // componentWillUpdata(nextProps) {
-  //   if (localStorage.getItem(`comments${this.props.id}`) !== null) {
-  //     console.log(JSON.parse(localStorage.getItem(`comments${this.props.id}`)));
-  //     this.setState({
-  //       comments: JSON.parse(localStorage.getItem(`comments${this.props.id}`))
-  //     });
-  //   }
-  // }
+  // 由于componentWillMount只会执行一次，所以当传递的props发生变化时需要使用改方法再次加载数据
   componentWillReceiveProps(nextProps) {
     this.setState({
       comments:
@@ -71,10 +66,13 @@ export default class ReBooksModel extends Component {
         comments: comments,
         comment: ''
       });
+      localStorage.setItem(
+        `comments${this.props.id}`,
+        JSON.stringify(comments)
+      );
     } else {
-      console.log(123);
+      message.error('你还未输入评论');
     }
-    localStorage.setItem(`comments${this.props.id}`, JSON.stringify(comments));
   };
   render() {
     const { booklist } = ReBooksData;
@@ -230,7 +228,44 @@ export default class ReBooksModel extends Component {
                   {/* 使用Antd的Empty空状态标签，当没有评论时进行显示 */}
                   {comments.length !== 0 ? (
                     comments.map((value, index) => {
-                      return <div key={index}>{value}</div>;
+                      return (
+                        <div>
+                          <div
+                            style={{
+                              display: 'flex',
+                              justifyContent: 'space-between',
+                              margin: '5px 20px'
+                            }}
+                          >
+                            <div
+                              style={{
+                                display: 'flex',
+                                justifyContent: 'space-around',
+                                alignItems: 'center',
+                                width: '20%'
+                              }}
+                            >
+                              <Avatar
+                                style={{
+                                  backgroundColor: '#7265e6',
+                                  verticalAlign: 'middle'
+                                }}
+                              >
+                                U
+                              </Avatar>
+                              <div
+                                style={{ fontSize: '20px', fontWeight: 'bold' }}
+                              >
+                                用户U
+                              </div>
+                            </div>
+                            <div key={index} style={{ fontSize: '18px' }}>
+                              {value}
+                            </div>
+                          </div>
+                          <Divider />
+                        </div>
+                      );
                     })
                   ) : (
                     <Empty description="暂无评论" />
