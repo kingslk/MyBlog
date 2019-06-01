@@ -111,14 +111,14 @@ mpl.rcParams['axes.unicode_minus'] = False
   servlet 的配置需要 web.xml 文件，这个文件。这个文件主要是由 servlet-name，servlet-class，url-pattern 这三个组成， name 可自定义，主要用于将 url 和 java 文件连接；url 指向 jsp 界面访问的路径；class 指对应的 java 文件。
 
 \`\`\`java
-    <servlet>
-      <servlet-name>delTopic </servlet-name>
-      <servlet-class>com.Servlet.delTopic </servlet-class>
-    </servlet>
-    <servlet-mapping>
-      <servlet-name>delTopic </servlet-name>
-      <url-pattern>/delTopic </url-pattern>
-    </servlet-mapping>
+<servlet>
+<servlet-name>delTopic </servlet-name>
+<servlet-class>com.Servlet.delTopic </servlet-class>
+</servlet>
+<servlet-mapping>
+<servlet-name>delTopic </servlet-name>
+<url-pattern>/delTopic </url-pattern>
+</servlet-mapping>
 \`\`\`
 
 - 接下来就是 servlet 的类编写。这边的类是和 servlet-class 中对应。这个类文件里面主要写的是 get 和 post 的方法。
@@ -126,15 +126,15 @@ mpl.rcParams['axes.unicode_minus'] = False
 
 \`\`\`java
 public class Servlet extends HttpServlet {
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+@Override
+protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-    }
+}
 
-    @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+@Override
+protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
   // 设置响应内容类型
-    }
+}
 }
 \`\`\`
 
@@ -149,114 +149,114 @@ public class Servlet extends HttpServlet {
 
 \`\`\`java
 public class Conn {
-    private Connection conn = null;
-    /**lianJie*/
-    private Statement stmt = null;
-    /**shenmin*/
-    private ResultSet rs = null;
-    /**jieguo*/
+private Connection conn = null;
+/**lianJie*/
+private Statement stmt = null;
+/**shenmin*/
+private ResultSet rs = null;
+/**jieguo*/
 
-    String DriverName="sun.jdbc.obdc.JbdcObdcDriver";
-    private String DBURL = "jdbc:mysql://localhost:3306/bbs?useUnicode=true&characterEncoding=utf-8";
-    private String DBUSER = "root";
-    private String DBPASSWORD = "123456";
+String DriverName="sun.jdbc.obdc.JbdcObdcDriver";
+private String DBURL = "jdbc:mysql://localhost:3306/bbs?useUnicode=true&characterEncoding=utf-8";
+private String DBUSER = "root";
+private String DBPASSWORD = "123456";
 
-    public Conn() throws ClassNotFoundException, SQLException {
-      Class.forName("com.mysql.jdbc.Driver");
-      conn = DriverManager.getConnection(this.DBURL,this.DBUSER,this.DBPASSWORD);
-      stmt=conn.createStatement();
-      // 实例化Statement对象
+public Conn() throws ClassNotFoundException, SQLException {
+Class.forName("com.mysql.jdbc.Driver");
+conn = DriverManager.getConnection(this.DBURL,this.DBUSER,this.DBPASSWORD);
+stmt=conn.createStatement();
+// 实例化Statement对象
 
-    }
-
-
-    /**
-     * 执行查询操作：select
-     **/
-    public ResultSet executeQuery(String sql) {
-      try {
-        rs = stmt.executeQuery(sql);
-      } catch (SQLException ex) {
-      System.err.println(ex.getMessage());
-      }
-      return rs;
-    }
+}
 
 
-    /**
-     * 执行更新操作：insert、update、delete
-     * */
-    private int executeUpdate(String sql) {
-      int result = 0;
-      try {
-
-      stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
-        ResultSet.CONCUR_READ_ONLY);
-      result = stmt.executeUpdate(sql);
-          } catch (SQLException ex) {
-      System.out.println(ex);
-          }
-        return result;
-            }
+/**
+ * 执行查询操作：select
+ **/
+public ResultSet executeQuery(String sql) {
+try {
+  rs = stmt.executeQuery(sql);
+} catch (SQLException ex) {
+System.err.println(ex.getMessage());
+}
+return rs;
+}
 
 
-    /**
-     * 关闭数据库连接
-     * */
-    private void close() {
-      try {
-        if (rs != null) {
-          rs.close();
-    }
-      } catch (Exception e) {
-        e.printStackTrace(System.err);
-    }
-      try {
-        if (stmt != null) {
-          stmt.close();
-    }
-      } catch (Exception e) {
-        e.printStackTrace(System.err);
-    }
-      try {
-        if (conn != null) {
-          conn.close();
-        }
-      } catch (Exception e) {
-        e.printStackTrace(System.err);
-    }
-      }
+/**
+ * 执行更新操作：insert、update、delete
+ * */
+private int executeUpdate(String sql) {
+int result = 0;
+try {
 
-    public User login(String uName,String uPass){
-      try{
-        User user =new User();
-        String strSql = "select * from t_user where uName = ?";
-        PreparedStatement ps = conn.prepareStatement(strSql);
-        ps.setString(1, uName);
-        ResultSet rs =  ps.executeQuery();
-        String pass = null;
-        while (rs.next()){
-          pass = rs.getString(1);
-          assert false;
-          user.setuId(rs.getInt("uId"));
-          user.setGender(rs.getString("gender"));
-          user.setHead(rs.getString("head"));
-          user.setRegTime(rs.getString("regTime"));
-          user.setuPass(rs.getString("uPass"));
-          user.setuName(rs.getString("uName"));
-    }
+stmt = conn.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE,
+  ResultSet.CONCUR_READ_ONLY);
+result = stmt.executeUpdate(sql);
+} catch (SQLException ex) {
+System.out.println(ex);
+}
+  return result;
+}
 
-    return user;
 
-      }catch(Exception e){
-        System.out.println(e);
-        return null;
-      }finally {
-    {
-      this.close();
-    }
-      }
-    }
+/**
+ * 关闭数据库连接
+ * */
+private void close() {
+try {
+  if (rs != null) {
+rs.close();
+}
+} catch (Exception e) {
+  e.printStackTrace(System.err);
+}
+try {
+  if (stmt != null) {
+stmt.close();
+}
+} catch (Exception e) {
+  e.printStackTrace(System.err);
+}
+try {
+  if (conn != null) {
+conn.close();
+  }
+} catch (Exception e) {
+  e.printStackTrace(System.err);
+}
+}
+
+public User login(String uName,String uPass){
+try{
+  User user =new User();
+  String strSql = "select * from t_user where uName = ?";
+  PreparedStatement ps = conn.prepareStatement(strSql);
+  ps.setString(1, uName);
+  ResultSet rs =  ps.executeQuery();
+  String pass = null;
+  while (rs.next()){
+pass = rs.getString(1);
+assert false;
+user.setuId(rs.getInt("uId"));
+user.setGender(rs.getString("gender"));
+user.setHead(rs.getString("head"));
+user.setRegTime(rs.getString("regTime"));
+user.setuPass(rs.getString("uPass"));
+user.setuName(rs.getString("uName"));
+}
+
+return user;
+
+}catch(Exception e){
+  System.out.println(e);
+  return null;
+}finally {
+{
+this.close();
+}
+}
+}
   }
 
 \`\`\`
@@ -406,6 +406,126 @@ response.sendRedirect("getBoardInfo")
 - React Native 中文社区
 
   https://bbs.react-native.cn/
+`
+    },
+    {
+      articleid: 'article4',
+      articlename: 'CSS-Flex布局，更方便的布局方式',
+      articledate: '2018.5.22',
+      articleclassification: '技术文章',
+      articlecontent: `#### 前言
+---
+一切都始于这样一个问题：怎样通过 CSS 简单而优雅的实现水平、垂直同时居中。
+
+然而当我开始接触到float属性时候，不由自主的感觉眼前一亮，让布局变得可以自主化。但是很快又失望了，因为发现，他只有left，right的属性，并没有我们想要的center。想要居中，还是得结合的display和text-align或者margin等属性来设置。
+
+于是后面我接触到了flex布局，让我体会到了通过 1 个属性就能优雅的实现子元素居中或均匀分布，甚至可以随着窗口缩放自动适应。
+所以我今天要重点介绍的flex 布局。
+
+---
+
+#### flex 基本概念
+使用 flex 布局首先要设置父容器 \`\`\`display: flex\`\`\`，然后再设置 \`\`\`justify-content: center\`\`\` 实现水平居中，最后设置 \`\`\`align-items: center\`\`\` 实现垂直居中。
+
+\`\`\`css
+#dad {
+display: flex;
+justify-content: center;
+align-items: center
+}
+\`\`\`
+
+就是这么简单，大功告成哈哈。等等，好像哪里不对，\`\`\`justify-content\`\`\` 和 \`\`\`align-items\`\`\` 是啥？现在我就来介绍介绍。
+
+==justify-content== 属性用于定义如何沿着主轴方向排列子容器。
+
+他有五个属性值：
+* flex-start：起始端对齐
+* flex-end：末尾段对齐
+* center：居中对齐
+* space-around：子容器沿主轴均匀分布，位于首尾两端的子容器到父容器的距离是子容器间距的一半。
+* space-between：子容器沿主轴均匀分布，位于首尾两端的子容器与父容器相切。
+
+
+==align-items==
+属性用于定义如何沿着交叉轴方向分配子容器的间距。
+
+它也有五个属性值：
+* flex-start：起始端对齐
+* flex-end：末尾段对齐
+* center：居中对齐
+* baseline：基线对齐，这里的 baseline 默认是指首行文字，即 first baseline，所有子容器向基线对齐，交叉轴起点到元素基线距离最大的子容器将会与交叉轴起始端相切以确定基线。
+* stretch：子容器沿交叉轴方向的尺寸拉伸至与父容器一致。
+
+#### 总结
+这三个属性值已经可以为大家解决不少的布局问题，这个也是flex的基础属性值。
+
+对于flex还有很多属性值在这里没有相关介绍，如果大家有兴趣的话可以去看看*阮一峰*先生的网络日志[Flex 布局教程：语法篇](http://www.ruanyifeng.com/blog/2015/07/flex-grammar.html)`
+    },
+    {
+      articleid: 'article5',
+      articlename: 'React-Router了解一下',
+      articledate: '2018.5.22',
+      articleclassification: '技术文章',
+      articlecontent: `> react-router 是做 SPA(不是你想的 SPA)时，控制不同的 url 渲染不同的组件的 js 库。用 react-router 可以方便开发，不需要手动维护 url 和组件的对应关系。开发时用 react-router-dom，react-router-dom 里面的组件是对 react-router 组件的封装。
+
+# SPA 的原理
+
+单页应用的原理用两种，一种是通过 hash 的变化，改变页面，另一种是通过 url 的变化改变页面。
+
+- hash
+
+* window.location.hash='xxx' 改变hash
+
+  window.addEventListener('hashchange',fun) 监听 hash 的改变
+
+* url
+
+* history.pushState(obj,title,'/url') 改变url
+
+  window.addEventListener('popstate',fun) 当浏览器向前向后时，触发该事件。
+
+# React-Router-dom 的核心组件
+
+- Router 
+  * Router 是一个外层，最后 render 的是它的子组件，不渲染具体业务组件。
+  分为 HashRouter(通过改变 hash)、BrowserRouter(通过改变 url)、MemoryRouter
+  Router 负责选取哪种方式作为单页应用的方案 hash 或 browser 或其他的，把 HashRouter 换成 BrowserRouter，代码可以继续运行。
+  Router 的 props 中有一个 history 的对象，history 是对 window.history 的封装，history 的负责管理与浏览器历史记录的交互和哪种方式的单页应用。history 会作为 childContext 里的一个属性传下去。
+
+* Route
+
+    * 负责渲染具体的业务组件，负责匹配url和对应的组件
+
+  有三种渲染的组件的方式：component(对应的组件)、render(是一个函数，函数里渲染组件)、children(无论哪种路由都会渲染)
+
+- Switch
+
+  - 匹配到一个 Route 子组件就返回不再继续匹配其他组件。
+
+* Link
+
+  - 跳转路由时的组件，调用 history.push 把改变 url。
+
+# history
+
+- history 是管理与浏览器历史记录的交互，和用哪种方式实现单页应用。这里实现了一个简单的 history
+- MyHistory 是父类，HashHistory、BrowserHistory 是两个子类。
+- HashHistory 和 BrowserHistory 实例的 loaction 属性是相同的，所以 updateLocation 是子类方法。location 的 pathname 在 HashHistory 是 hash 的#后面的值，在 BrowserHistory 是 window.location.pathname。
+- 两个子类里有一个_push 方法，用来改变 url，都是用的 history.pushState 方法。
+
+# Redirect
+
+- Redirect 跳转到某个路由，不渲染组件
+- 通过 history.createHref 获得 path，history.push 跳转过去
+
+# withRouter
+
+- withRouter 实际是一个高阶组件，即一个函数返回一个组件。返回的组件外层是 Route，Route 的 children 属性里渲染接收到的组件。
+
+# 总结
+
+> react-router、react-router-dom 的 api 还有很多，像 Redirect 和 withRouter 还有的许多 api。本文的组件只能跑通 react-router-dom 里的 example。源码要复杂的多，通过学习源码，并自己实现相应的功能，可以对 react 及 react-router 有更深的理解，学到许多编程思想，数据结构很重要，像源码中 Router 里的 ChildContext 的数据解构，子组件多次用到里面的方法或属性，方便复用。
 `
     }
   ]
