@@ -3,12 +3,14 @@ import './connection.css';
 export default class connection extends Component {
   constructor() {
     super();
-    this.state = { arrowStatus: false, wordStatus: false };
+    this.state = { arrowStatus: false, wordStatus: false, canvasStatus: false };
   }
   // 在该声明周期中调用绘制函数
   componentDidMount() {
-    this.drawman();
     this.drawarrow();
+  }
+  componentDidUpdate() {
+    this.drawman();
   }
   // 使用定时器改变state的状态
   componentWillMount() {
@@ -18,60 +20,116 @@ export default class connection extends Component {
     setTimeout(() => {
       this.setState({ wordStatus: !this.state.wordStatus });
     }, 2000);
+    setInterval(() => {
+      this.setState({ canvasStatus: !this.state.canvasStatus });
+    }, 1000);
   }
+
   // 绘制火柴人
   drawman() {
+    const { canvasStatus } = this.state;
     var canvas = document.getElementById('myCanvas');
     var context = canvas.getContext('2d');
-    context.fillStyle = '#fff';
-    context.fillRect(0, 0, 300, 300);
+    if (canvasStatus === false) {
+      context.fillStyle = '#fff';
+      context.fillRect(0, 0, 300, 300);
 
-    context.beginPath();
-    context.strokeStyle = '#c00';
-    context.lineWidth = 3;
-    context.arc(100, 50, 30, 0, Math.PI * 2, true);
-    context.fill();
-    context.stroke();
+      context.beginPath();
+      context.strokeStyle = '#c00';
+      context.lineWidth = 3;
+      context.arc(100, 50, 30, 0, Math.PI * 2, true);
+      context.fill();
+      context.stroke();
 
-    context.beginPath();
-    context.strokeStyle = '#c00';
-    context.lineWidth = 3;
-    context.arc(100, 50, 20, 0, Math.PI, false);
-    context.fill();
-    context.stroke();
+      context.beginPath();
+      context.strokeStyle = '#c00';
+      context.lineWidth = 3;
+      context.arc(100, 50, 20, 0, Math.PI, false);
+      context.fill();
+      context.stroke();
 
-    context.beginPath();
-    context.strokeStyle = '#c00';
-    context.lineWidth = 3;
-    context.arc(100, 50, 20, 0, Math.PI, false);
-    context.fill();
-    context.stroke();
+      context.beginPath();
+      context.strokeStyle = '#c00';
+      context.lineWidth = 3;
+      context.arc(100, 50, 20, 0, Math.PI, false);
+      context.fill();
+      context.stroke();
 
-    context.beginPath();
-    context.strokeStyle = '#c00';
-    context.lineWidth = 3;
-    context.arc(90, 45, 3, 0, Math.PI, true);
-    context.fill();
-    context.stroke();
+      context.beginPath();
+      context.strokeStyle = '#c00';
+      context.lineWidth = 3;
+      context.arc(90, 45, 3, 0, Math.PI, true);
+      context.fill();
+      context.stroke();
 
-    context.beginPath();
-    context.strokeStyle = '#c00';
-    context.lineWidth = 3;
-    context.arc(110, 45, 3, 0, Math.PI, true);
-    context.fill();
-    context.stroke();
-    context.beginPath();
-    context.moveTo(100, 80);
-    context.lineTo(100, 180);
-    context.lineTo(75, 250);
-    context.moveTo(100, 180);
-    context.lineTo(125, 250);
-    context.moveTo(100, 90);
-    context.lineTo(75, 140);
-    context.moveTo(100, 90);
-    context.lineTo(125, 140);
-    context.stroke();
-    context.closePath();
+      context.beginPath();
+      context.strokeStyle = '#c00';
+      context.lineWidth = 3;
+      context.arc(110, 45, 3, 0, Math.PI, true);
+      context.fill();
+      context.stroke();
+      context.beginPath();
+      context.moveTo(100, 80);
+      context.lineTo(100, 180);
+      context.lineTo(75, 250);
+      context.moveTo(100, 180);
+      context.lineTo(125, 250);
+      context.moveTo(100, 90);
+      context.lineTo(75, 140);
+      context.moveTo(100, 90);
+      context.lineTo(125, 140);
+      context.stroke();
+      context.closePath();
+    } else {
+      context.fillStyle = '#fff';
+      context.fillRect(0, 0, 300, 300);
+
+      context.beginPath();
+      context.strokeStyle = '#c00';
+      context.lineWidth = 3;
+      context.arc(100, 50, 30, 0, Math.PI * 2, true);
+      context.fill();
+      context.stroke();
+
+      context.beginPath();
+      context.strokeStyle = '#c00';
+      context.lineWidth = 3;
+      context.arc(100, 60, 10, 0, Math.PI * 2, false);
+      context.fill();
+      context.stroke();
+
+      context.beginPath();
+      context.strokeStyle = '#c00';
+      context.lineWidth = 3;
+      context.arc(90, 40, 3, 0, Math.PI * 2, true);
+      context.fill();
+      context.stroke();
+
+      context.beginPath();
+      context.strokeStyle = '#c00';
+      context.lineWidth = 3;
+      context.arc(110, 40, 3, 0, Math.PI * 2, true);
+      context.fill();
+      context.stroke();
+
+      context.beginPath();
+
+      context.fill();
+      context.stroke();
+      context.beginPath();
+      context.moveTo(100, 80);
+      context.lineTo(100, 180);
+      context.moveTo(100, 180);
+      context.lineTo(55, 230);
+      context.moveTo(100, 180);
+      context.lineTo(145, 230);
+      context.moveTo(100, 110);
+      context.lineTo(55, 70);
+      context.moveTo(100, 110);
+      context.lineTo(145, 70);
+      context.stroke();
+      context.closePath();
+    }
   }
   // 绘制箭头
   drawarrow() {

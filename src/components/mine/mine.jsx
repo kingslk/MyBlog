@@ -5,7 +5,7 @@ import { Icon, Tooltip, Typography } from 'antd';
 export default class Mine extends Component {
   constructor() {
     super();
-    // 设定页面state
+    // 设定页面需要展示的state
     this.state = {
       zhihu: '知乎',
       github: 'github',
@@ -46,7 +46,7 @@ export default class Mine extends Component {
           </p>
         </div>
         <div style={{ display: 'flex', height: '60px' }}>
-          <Text className="text-container">文章：4</Text>
+          <Text className="text-container">文章：5</Text>
           <Text className="text-container">浏览量：999</Text>
         </div>
         <div className="my-link">
