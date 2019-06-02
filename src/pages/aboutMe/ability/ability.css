@@ -1,0 +1,52 @@
+.ability-container {
+  width: 60%;
+  margin: 30px auto;
+}
+.progress-container {
+  position: relative;
+  animation: progress 2s infinite;
+  animation-iteration-count: 1;
+}
+.ability-title {
+  text-align: center;
+  font-size: 24px;
+  margin: 10px;
+  position: relative;
+  animation: ability 2s infinite;
+  animation-iteration-count: 1;
+}
+.statistic-container {
+  background: #ececec;
+  padding: 30px;
+  position: relative;
+  animation: statistic 2s infinite;
+  animation-iteration-count: 1;
+}
+@keyframes ability {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes progress {
+  from {
+    opacity: 0;
+    left: 100px;
+  }
+  to {
+    opacity: 1;
+    left: 0px;
+  }
+}
+@keyframes statistic {
+  from {
+    opacity: 0;
+    top: 60px
+  }
+  to {
+    opacity: 1;
+    top:0px
+  }
+}

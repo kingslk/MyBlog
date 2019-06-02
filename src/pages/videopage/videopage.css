@@ -1,0 +1,98 @@
+.video-container {
+  margin: 80px auto;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  place-content: center;
+  align-items: center;
+}
+.video-title {
+  text-align: center;
+  position: relative;
+  animation: videotitle 2s infinite;
+  animation-iteration-count: 1;
+  transition: all 1s
+}
+.video-title:hover {
+  text-shadow: 11px 9px 7px black;
+  transition: all 1s
+}
+.video-content {
+  text-align: center;
+  position: relative;
+  animation: videocontent 2s infinite;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+  animation-iteration-count: 1;
+}
+.video-message {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  margin: 10px;
+  animation: videomessage 2s infinite;
+  animation-delay: 1.5s;
+  animation-fill-mode: backwards;
+  animation-iteration-count: 1;
+}
+.video-show {
+  margin: auto;
+  position: relative;
+  animation: videoshow 2s infinite;
+  animation-delay: 3s;
+  animation-fill-mode: backwards;
+  animation-iteration-count: 1;
+}
+@keyframes videotitle {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+  from {
+    top: -120px;
+  }
+  to {
+    top: 0px;
+  }
+}
+
+@keyframes videocontent {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+  from {
+    left: -120px;
+  }
+  to {
+    left: 0px;
+  }
+}
+
+@keyframes videomessage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+  from {
+    bottom: -120px;
+  }
+  to {
+    bottom: 0px;
+  }
+}
+
+@keyframes videoshow {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}

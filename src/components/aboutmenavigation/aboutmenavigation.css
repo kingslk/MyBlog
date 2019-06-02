@@ -1,0 +1,21 @@
+.aboutMe-icon {
+  font-size: 46px;
+  margin: 24px 0;
+}
+.nav-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  color: white;
+  transition: all 1s;
+}
+.nav-action {
+  background: #0085ff;
+}
+.nav-item:hover {
+  background: #b9f7ff;
+  transition: all 1s;
+  color: gray
+}
+

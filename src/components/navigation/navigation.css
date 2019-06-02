@@ -1,0 +1,33 @@
+.ant-menu-horizontal {
+  line-height: 64px;
+  white-space: nowrap;
+  border: 1px solid #e8e8e8;
+  height: 64px;
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: fixed;
+  top: 250px;
+  z-index: 10;
+  box-shadow: 0 0 10px #b7b7b7;
+  transform: translateY(5px);
+  transition: all 1s;
+}
+.ant-menu-horizontal-after {
+  line-height: 64px;
+  white-space: nowrap;
+  border: 1px solid #e8e8e8;
+  width: 100%;
+  font-size: 20px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  position: fixed;
+  top: 2px;
+  z-index: 9999;
+  box-shadow: 0 0 10px #b7b7b7;
+  transform: translateY(0px);
+  transition: all 1s;
+}

@@ -1,0 +1,134 @@
+.flame {
+  /* width: 100px;
+  height: 100px; */
+  /* margin: 200px auto; */
+  /*background: #FFFFFF;*/
+  position: relative;
+  z-index: -100;
+}
+/*火焰效果，用简单div实现*/
+.flame div:nth-child(-n + 6) {
+  width: 0px;
+  height: 0px;
+  background: #d81818;
+  border-radius: 20%;
+  transform: rotateZ(45deg);
+  position: absolute;
+  left: 45%;
+  top: 60%;
+}
+
+.flame div:nth-child(1) {
+  animation: gun 6s linear Infinite;
+}
+
+.flame div:nth-child(2) {
+  animation: gun1 6s linear Infinite;
+  animation-delay: 1s;
+}
+
+.flame div:nth-child(3) {
+  animation: gun 6s linear Infinite;
+  animation-delay: 2s;
+}
+.flame div:nth-child(4) {
+  animation: gun1 6s linear Infinite;
+  animation-delay: 3s;
+}
+.flame div:nth-child(5) {
+  animation: gun 6s linear Infinite;
+  animation-delay: 4s;
+}
+.flame div:nth-child(6) {
+  animation: gun1 6s linear Infinite;
+  animation-delay: 5s;
+}
+/*添加伪类元素实现火花效果*/
+.flame1::before {
+  content: '';
+  width: 0px;
+  height: 0px;
+  background: #ffc001;
+  border-radius: 50%;
+  transform: rotateZ(45deg);
+  position: absolute;
+  left: 45%;
+  top: 60%;
+  animation: gun2 4s ease-in Infinite;
+  animation-delay: 1s;
+  background: radial-gradient(5px at center, red, #ffc001);
+}
+.flame3::before {
+  content: '';
+  width: 0px;
+  height: 0px;
+  background: #ffc001;
+  border-radius: 50%;
+  transform: rotateZ(45deg);
+  position: absolute;
+  left: 45%;
+  top: 60%;
+  animation: gun2 4s ease-in Infinite;
+  animation-delay: 3s;
+  background: radial-gradient(5px at center, red, #ffc001);
+}
+.flame5::before {
+  content: '';
+  width: 0px;
+  height: 0px;
+  background: #ffc001;
+  border-radius: 50%;
+  transform: rotateZ(45deg);
+  position: absolute;
+  left: 45%;
+  top: 60%;
+  animation: gun2 4s ease-in Infinite;
+  animation-delay: 6s;
+  background: radial-gradient(5px at center, red, #ffc001);
+}
+/*设置动画实现火焰上升*/
+@keyframes gun {
+  0% {
+    width: 5px;
+    height: 5px;
+    transform: translateY(0px) translateX(0px) rotateZ(45deg);
+  }
+  100% {
+    width: 20px;
+    height: 20px;
+    transform: translateY(-100px) translateX(-15px) rotateZ(45deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes gun1 {
+  0% {
+    width: 5px;
+    height: 5px;
+    transform: translateY(0px) translateX(0px) rotateZ(45deg);
+  }
+  100% {
+    width: 20px;
+    height: 20px;
+    transform: translateY(-100px) translateX(15px) rotateZ(45deg);
+    opacity: 0.2;
+  }
+}
+
+@keyframes gun2 {
+  0% {
+    width: 1.5px;
+    height: 1.5px;
+    transform: translateY(0px) translateX(0px) rotateZ(45deg);
+  }
+  50% {
+    width: 2.5px;
+    height: 2.5px;
+    transform: translateY(-65px) translateX(-15px) rotateZ(45deg);
+  }
+  100% {
+    width: 5px;
+    height: 5px;
+    transform: translateY(-100px) translateX(-35px) rotateZ(45deg);
+  }
+}

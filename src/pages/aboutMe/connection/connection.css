@@ -1,0 +1,30 @@
+.showarrow-before {
+  opacity: 0;
+  transition: all 1s;
+  position: relative;
+  top: 100px;
+}
+.showarrow-after {
+  opacity: 1;
+  transition: all 1s;
+  position: relative;
+  top: 10px;
+}
+.showword-before {
+  color: #c00;
+  font-size: 30px;
+  font-weight: bold;
+  opacity: 0;
+  transition: all 1s;
+  position: relative;
+  top: 100px;
+}
+.showword-after {
+  color: #c00;
+  font-size: 30px;
+  font-weight: bold;
+  opacity: 1;
+  transition: all 1s;
+  position: relative;
+  top: 10px;
+}

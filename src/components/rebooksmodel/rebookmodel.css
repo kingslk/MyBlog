@@ -1,0 +1,77 @@
+.model-book-imfomation {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+}
+.model-book-title-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.modal-book-title {
+  margin: 0;
+  font-size: 18px;
+  font-weight: bold;
+}
+.modal-book-introduction {
+  margin: 0;
+  color: #c5c5c5;
+  font-size: 16px;
+  margin-bottom: 15px;
+}
+.model-book-author-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  margin-bottom: 15px;
+}
+.modal-button-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 50%;
+}
+.modal-button-container > button {
+  margin-right: 10px;
+}
+
+.book-catalogue {
+  display: flex;
+  flex-direction: row;
+}
+
+.catalogue-num {
+  height: 60px;
+  width: 60px;
+  border-radius: 80px;
+  border: 2px solid;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+.catalogue-line {
+  height: 35px;
+  width: 3px;
+  border: 1px solid;
+}
+.catalogue-title {
+  margin: 0px;
+  font-size: 20px;
+  font-weight: bold;
+}
+.catalogue-message {
+  display: flex;
+  flex-direction: row;
+}
+.catalogue-message > p {
+  margin-right: 10px;
+  font-size: 16px;
+  color: #aaaaaa;
+}

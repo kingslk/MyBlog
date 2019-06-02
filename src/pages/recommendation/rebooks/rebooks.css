@@ -1,0 +1,202 @@
+.ant-message {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  font-feature-settings: 'tnum', 'tnum';
+  position: fixed;
+  top: 16px;
+  left: 0;
+  z-index: 9999;
+  width: 100%;
+  pointer-events: none;
+}
+.ant-notification {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  color: rgba(0, 0, 0, 0.65);
+  font-size: 14px;
+  font-variant: tabular-nums;
+  line-height: 1.5;
+  list-style: none;
+  font-feature-settings: 'tnum', 'tnum';
+  position: fixed;
+  z-index: 9999;
+  width: 384px;
+  max-width: calc(100vw - 32px);
+  margin-right: 24px;
+}
+.rebooks-container {
+  position: relative;
+  right: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  margin: 80px auto;
+  margin-bottom: 0px;
+  transition: all 1s;
+}
+.book-list {
+  position: relative;
+  min-height: 500px;
+  width: 55%;
+  box-shadow: 1px 1px 20px 2px rgba(4, 5, 13, 0.23);
+  margin-right: 30px;
+  animation: booklist 2s infinite;
+  animation-iteration-count: 1;
+}
+.book-item {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  padding: 20px 40px;
+  height: 220px;
+  border-bottom: 1px solid;
+  transition: all 1s;
+  z-index: 1;
+}
+.book-item:hover {
+  background: #e1e1e1;
+  transition: all 1s;
+}
+.book-img {
+  box-shadow: 3px 4px 12px 0 rgba(0, 0, 0, 0.2);
+}
+.book-imfomation {
+  padding-left: 20px;
+}
+.book-title-container {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  align-items: center;
+  padding-left: 20px;
+}
+.book-title {
+  margin: 0;
+  font-size: 28px;
+  font-weight: bold;
+  color: #000;
+}
+.book-title:hover {
+  color: #43a5d3;
+}
+.book-introduction {
+  margin: 0;
+  padding: 20px 20px;
+  color: #a0a0a0;
+}
+.book-author-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  width: 600px;
+  padding: 0 20px;
+}
+.book-author {
+  margin: 0 20px;
+}
+.book-author-introduction {
+  margin: 0;
+}
+.book-content-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-content: center;
+  align-items: center;
+  padding: 20px 15px;
+}
+.book-price {
+  margin: 0;
+  font-size: 20px;
+  color: #f50;
+  font-weight: bold;
+}
+.book-buyer {
+  margin: 0 20px;
+  font-size: 16px;
+  color: #a0a0a0;
+}
+.introduction-reason {
+  min-height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 1px 1px 20px 2px rgba(4, 5, 13, 0.23);
+}
+.introduction-reason-title {
+  margin-top: 10px;
+  font-weight: 600;
+}
+.div-line {
+  height: 1.5px;
+  background: black;
+  width: 300px;
+  margin: 10px 0px;
+}
+.rebooks-message-container {
+  margin-top: 16px;
+  min-height: 120px;
+  display: flex;
+  box-shadow: rgba(4, 5, 13, 0.23) 1px 1px 20px 2px;
+}
+.do-somethings {
+  min-height: 120px;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  align-items: center;
+  justify-content: center;
+  color: rgba(0, 0, 0, 0.65);
+}
+.do-somethings:hover {
+  background: #dadada;
+}
+.some-message {
+  width: 300px;
+  z-index: 1;
+  position: fixed;
+  right: 120px;
+  transition: all 1s;
+  animation: somemessage 2s infinite;
+  animation-iteration-count: 1;
+}
+.some-message-after {
+  width: 300px;
+  z-index: 1;
+  position: fixed;
+  right: 120px;
+  transition: all 1s;
+  transform: translateY(-150px);
+  animation: somemessage 2s infinite;
+  animation-iteration-count: 1;
+}
+@keyframes booklist {
+  from {
+    opacity: 0;
+    right: 120px;
+  }
+  to {
+    opacity: 1;
+    right: 0px;
+  }
+}
+@keyframes somemessage {
+  from {
+    opacity: 0;
+    right: 0px;
+  }
+  to {
+    opacity: 1;
+    right: 120px;
+  }
+}

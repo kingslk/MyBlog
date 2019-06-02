@@ -1,0 +1,51 @@
+.articlelist-container {
+  position: relative;
+  margin-top: 10px;
+  margin-left: 12px;
+  animation: articlelist 2s infinite;
+  animation-delay: 1s;
+  animation-fill-mode: backwards;
+  animation-iteration-count: 1;
+}
+.articlelist {
+  margin: 16px 0 -32px 24px;
+}
+.ant-collapse-header {
+  z-index: 2;
+  position: relative;
+}
+.ant-timeline-item-content {
+  z-index: 2;
+  position: relative;
+}
+.span-a {
+  cursor: pointer;
+  color: #3894de;
+  transition: all 1s;
+}
+.span-a:hover {
+  cursor: pointer;
+  color: #005bd7;
+  transition: all 1s;
+}
+.project div {
+  line-height: 90px;
+  font-size: 28px;
+  margin: 0 10px;
+  transition: all 1s;
+}
+.project div:hover {
+  line-height: 90px;
+  font-size: 36px;
+  margin: 0 10px;
+  transform: rotate(30deg);
+  transition: all 1s;
+}
+@keyframes articlelist {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
