@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import './mine.css';
 import Head from '../../assets/head.jpg';
 import { Icon, Tooltip, Typography } from 'antd';
+// import Axios from 'axios';
 export default class Mine extends Component {
   constructor() {
     super();
@@ -10,8 +11,37 @@ export default class Mine extends Component {
       zhihu: '知乎',
       github: 'github',
       facebook: 'facebook',
-      myLocation: '福建省厦门市集美区厦门理工学院'
+      myLocation: null
     };
+  }
+  componentWillMount() {
+    var BMap = window.BMap; //取出window中的BMap对象
+    var myCity = new BMap.LocalCity();
+    // let WeatherLists = {};
+    myCity.get(result => {
+      console.log(result); //城市名称
+      this.setState({
+        myLocation: result.name
+      });
+      // if (result.name) {
+      //   /*通过当前位置城市信息获取天气*/
+      //   Axios(
+      //     {
+      //       url:
+      //         'https://free-api.heweather.com/v5/weather?key=19713447578c4afe8c12a351d46ea922'
+      //     },
+      //     { params: { city: '厦门' } }
+      //   )
+      //     .then(res => {
+      //       console.log(res);
+      //       WeatherLists = res.data.HeWeather5[0];
+      //       console.log(WeatherLists);
+      //     })
+      //     .catch(err => {
+      //       console.log(err);
+      //     });
+      // }
+    });
   }
   render() {
     // 在页面中调用声明的state

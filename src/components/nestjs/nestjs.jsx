@@ -6,24 +6,8 @@ class nestjs extends Component {
     super();
     this.state = {
       follow: true
-      // pageStatus: 'nochange'
     };
   }
-  // componentDidMount() {
-  //   window.addEventListener('scroll', this.handleScroll);
-  // }
-  // handleScroll = e => {
-  //   let ctx = this;
-  //   if (document.documentElement.scrollTop >= 100) {
-  //     ctx.setState({
-  //       pageStatus: 'change'
-  //     });
-  //   } else {
-  //     ctx.setState({
-  //       pageStatus: 'nochange'
-  //     });
-  //   }
-  // };
   render() {
     const { follow } = this.state;
     return (

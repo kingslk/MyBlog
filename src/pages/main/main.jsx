@@ -23,6 +23,7 @@ export default class Main extends Component {
       articleList: articleList
     });
   }
+  // 点金不同的分享按钮，分别弹出文章各自的分享，真正达到效果需要后台
   showShare = num => {
     var showWeiXin = this.state.showWeiXin;
     var showQQ = this.state.showQQ;
@@ -67,7 +68,7 @@ export default class Main extends Component {
                   content={
                     <div style={{ width: '900px' }}>
                       <Link to={`article/article${index + 1}`}>
-                        <Tooltip title="点我查看详情" placement="rightTop">
+                        <Tooltip title="点击查看详情" placement="rightTop">
                           <label className="article-name">
                             {value.articletitle}
                           </label>

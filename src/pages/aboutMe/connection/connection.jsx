@@ -25,7 +25,7 @@ export default class connection extends Component {
     }, 1000);
   }
 
-  // 绘制火柴人
+  // 根据不同的状态绘制状态不同的火柴人
   drawman() {
     const { canvasStatus } = this.state;
     var canvas = document.getElementById('myCanvas');
