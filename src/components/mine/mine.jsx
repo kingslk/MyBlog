@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './mine.css';
 import Head from '../../assets/head.jpg';
-import { Icon, Tooltip, Typography } from 'antd';
+import { Icon, Popover, Typography, Tooltip } from 'antd';
 // import Axios from 'axios';
 export default class Mine extends Component {
   constructor() {
@@ -10,42 +10,24 @@ export default class Mine extends Component {
     this.state = {
       zhihu: '知乎',
       github: 'github',
-      facebook: 'facebook',
-      myLocation: null
+      facebook: 'facebook'
     };
   }
   componentWillMount() {
-    var BMap = window.BMap; //取出window中的BMap对象
-    var myCity = new BMap.LocalCity();
-    // let WeatherLists = {};
-    myCity.get(result => {
-      console.log(result); //城市名称
-      this.setState({
-        myLocation: result.name
-      });
-      // if (result.name) {
-      //   /*通过当前位置城市信息获取天气*/
-      //   Axios(
-      //     {
-      //       url:
-      //         'https://free-api.heweather.com/v5/weather?key=19713447578c4afe8c12a351d46ea922'
-      //     },
-      //     { params: { city: '厦门' } }
-      //   )
-      //     .then(res => {
-      //       console.log(res);
-      //       WeatherLists = res.data.HeWeather5[0];
-      //       console.log(WeatherLists);
-      //     })
-      //     .catch(err => {
-      //       console.log(err);
-      //     });
-      // }
-    });
+    // 地图功能未实现
+    // const { BMap } = window;
+    // var map = new BMap.Map('allmap'); // 创建Map实例
+    // map.centerAndZoom(new BMap.Point(116.404, 39.915), 11); // 初始化地图,设置中心点坐标和地图级别
+    // var p1 = new BMap.Point(116.301934, 39.977552);
+    // var p2 = new BMap.Point(116.508328, 39.919141);
+    // var driving = new BMap.DrivingRoute(map, {
+    //   renderOptions: { map: map, autoViewport: true }
+    // });
+    // driving.search(p1, p2);
   }
   render() {
     // 在页面中调用声明的state
-    const { zhihu, github, facebook, myLocation } = this.state;
+    const { zhihu, github, facebook } = this.state;
     // 使用Antd的Text标签编写文字
     const { Text } = Typography;
     return (
@@ -55,13 +37,15 @@ export default class Mine extends Component {
         </div>
         <div className="location">
           {/* 鼠标hover时显示Tooltip文字提示 */}
-          <Tooltip title={myLocation}>
+          <Popover
+            content={<div id="allmap">福建省厦门市集美区厦门理工学院</div>}
+          >
             <Icon
               type="environment"
               theme="filled"
               style={{ fontSize: '20px', zIndex: '1' }}
             />
-          </Tooltip>
+          </Popover>
           <Text>Xiamen</Text>
         </div>
         <div className="personalized-signature">
