@@ -2,7 +2,7 @@ const articledata = {
   articlecontents: [
     {
       articleid: 'article1',
-      articlename: 'Python期末项目',
+      articlename: 'Python——一个简单的可视化数据分析',
       articledate: '2018.12.17',
       articleclassification: '期末项目',
       articlecontent: `# 技术分析
@@ -87,7 +87,7 @@ mpl.rcParams['axes.unicode_minus'] = False
     },
     {
       articleid: 'article2',
-      articlename: 'JSP期末项目',
+      articlename: 'JSP——以MVC模式制作简单的个人博客',
       articledate: '2018.12.15',
       articleclassification: '期末项目',
       articlecontent: `# 开发步骤
@@ -410,7 +410,7 @@ response.sendRedirect("getBoardInfo")
     },
     {
       articleid: 'article4',
-      articlename: 'CSS-Flex布局，更方便的布局方式',
+      articlename: 'CSS-Flex——适应性更强的布局',
       articledate: '2018.5.22',
       articleclassification: '技术文章',
       articlecontent: `#### 前言

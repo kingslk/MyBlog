@@ -4,9 +4,9 @@
   "private": true,
   "dependencies": {
     "antd": "^3.16.5",
-    "axios": "^0.19.0",
     "canvas-nest.js": "^2.0.4",
     "react": "^16.8.6",
+    "react-bmap": "^1.0.98",
     "react-canvas-nest": "^1.0.10",
     "react-dom": "^16.8.6",
     "react-player": "^1.11.0",

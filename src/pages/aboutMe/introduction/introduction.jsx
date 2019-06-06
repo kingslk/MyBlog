@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './introduction.css';
-import FirstHead from '../../../assets/books/book1.jpg';
 import { Upload, Icon, message, Tooltip } from 'antd';
 
 export default class introduction extends Component {
@@ -8,7 +7,7 @@ export default class introduction extends Component {
     super();
     this.state = {
       loading: false,
-      imageUrl: FirstHead
+      imageUrl: ''
     };
   }
   // 上传图片并在网页中显示
@@ -29,7 +28,7 @@ export default class introduction extends Component {
     }
     return isJPG && isLt2M;
   }
-  // 该表图片上传状态
+  // 图片上传状态
   handleChange = info => {
     if (info.file.status === 'uploading') {
       this.setState({ loading: true });

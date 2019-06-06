@@ -1,33 +1,65 @@
 import React, { Component } from 'react';
 import './mine.css';
 import Head from '../../assets/head.jpg';
-import { Icon, Popover, Typography, Tooltip } from 'antd';
-// import Axios from 'axios';
+import { Icon, Popover, Typography, Tooltip, Modal, Spin } from 'antd';
+import { Map, Marker, NavigationControl, InfoWindow } from 'react-bmap';
+
 export default class Mine extends Component {
   constructor() {
     super();
     // 设定页面需要展示的state
     this.state = {
+      visible: false,
       zhihu: '知乎',
       github: 'github',
-      facebook: 'facebook'
+      facebook: 'facebook',
+      pageStatus: false
     };
   }
   componentWillMount() {
-    // 地图功能未实现
-    // const { BMap } = window;
-    // var map = new BMap.Map('allmap'); // 创建Map实例
-    // map.centerAndZoom(new BMap.Point(116.404, 39.915), 11); // 初始化地图,设置中心点坐标和地图级别
-    // var p1 = new BMap.Point(116.301934, 39.977552);
-    // var p2 = new BMap.Point(116.508328, 39.919141);
-    // var driving = new BMap.DrivingRoute(map, {
-    //   renderOptions: { map: map, autoViewport: true }
-    // });
-    // driving.search(p1, p2);
+    // 调用百度地图api获取定位
+    var BMap = window.BMap;
+    var geolocation = new BMap.Geolocation();
+    geolocation.getCurrentPosition(
+      function(r) {
+        console.log(r.point);
+        window.lat = r.point.lat;
+        window.lng = r.point.lng;
+      },
+      { enableHighAccuracy: true }
+    );
   }
+  componentDidMount() {
+    this.timerID = setInterval(() => {
+      console.log(window.lat);
+      if (window.lat !== undefined) {
+        this.setState({
+          pageStatus: !this.state.pageStatus
+        });
+        clearInterval(this.timerID);
+      }
+    }, 2000);
+  }
+  showModal = () => {
+    this.setState({
+      visible: true
+    });
+  };
+
+  handleOk = e => {
+    this.setState({
+      visible: false
+    });
+  };
+
+  handleCancel = e => {
+    this.setState({
+      visible: false
+    });
+  };
   render() {
     // 在页面中调用声明的state
-    const { zhihu, github, facebook } = this.state;
+    const { zhihu, github, facebook, pageStatus } = this.state;
     // 使用Antd的Text标签编写文字
     const { Text } = Typography;
     return (
@@ -37,13 +69,12 @@ export default class Mine extends Component {
         </div>
         <div className="location">
           {/* 鼠标hover时显示Tooltip文字提示 */}
-          <Popover
-            content={<div id="allmap">福建省厦门市集美区厦门理工学院</div>}
-          >
+          <Popover content={<div>点击显示您的位置</div>}>
             <Icon
               type="environment"
               theme="filled"
               style={{ fontSize: '20px', zIndex: '1' }}
+              onClick={this.showModal}
             />
           </Popover>
           <Text>Xiamen</Text>
@@ -87,6 +118,34 @@ export default class Mine extends Component {
             />
           </Tooltip>
         </div>
+        <Modal
+          title="您当前位置"
+          visible={this.state.visible}
+          onOk={this.handleOk}
+          onCancel={this.handleCancel}
+        >
+          {pageStatus === false ? (
+            <div
+              style={{
+                margin: 'auto',
+                display: 'flex',
+                justifyContent: 'center'
+              }}
+            >
+              <Spin tip="位置正在加载中……" />
+            </div>
+          ) : (
+            <Map center={{ lng: window.lng, lat: window.lat }} zoom="12">
+              <Marker position={{ lng: window.lng, lat: window.lat }} />
+              <NavigationControl />
+              <InfoWindow
+                position={{ lng: window.lng, lat: window.lat }}
+                text={` lng: ${window.lng}, lat: ${window.lat}`}
+                title="当前位置经纬度"
+              />
+            </Map>
+          )}
+        </Modal>
       </div>
     );
   }
