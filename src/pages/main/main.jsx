@@ -66,7 +66,7 @@ export default class Main extends Component {
                 <Popover
                   placement="right"
                   content={
-                    <div style={{ width: '900px' }}>
+                    <div>
                       <Link to={`article/article${index + 1}`}>
                         <Tooltip title="点击查看详情" placement="rightTop">
                           <label className="article-name">
@@ -86,7 +86,7 @@ export default class Main extends Component {
                           </p>
                         </div>
                       </div>
-                      <p style={{ marginLeft: '18px', paddingTop: '20px' }}>
+                      <p style={{ marginLeft: '18px', paddingTop: '10px' }}>
                         {value.articleintroduction}
                       </p>
                       <hr />

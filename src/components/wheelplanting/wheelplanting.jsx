@@ -18,7 +18,7 @@ export default class wheelplanting extends Component {
         }}
       >
         <img src={Side1} className="side1" alt="" />
-        <div style={{ margin: '0 -126px', width: '85%' }}>
+        <div style={{ margin: '0 -126px', width: '84%' }}>
           {/* 使用Antd的Carousel走马灯组件，实现页面中的轮播图效果 */}
           <Carousel autoplay className="ant-carousel">
             <div>
